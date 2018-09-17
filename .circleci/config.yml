@@ -1,0 +1,74 @@
+version: 2
+jobs:
+ build:
+   docker:
+   - image: circleci/ruby:2.5.1-node
+
+   steps:
+   - checkout
+   - run:
+       name: Create master key file
+       command: echo "$MASTER_KEY" >> config/master.key
+   - run:
+       name: Bundle install
+       command: bundle install
+   - run:
+       name: Update install
+       command: sudo apt-get update
+   - run:
+       name: MySQL install
+       command: sudo apt-get install mysql-server
+   - run:
+       name: MySQL start
+       command: sudo service mysql start
+
+   - run:
+       name: Create non-admin user
+       command: |
+         sudo mysql -u root -e "CREATE USER '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASSWORD}';"
+   - run:
+       name: Set user permissions
+       command: |
+         sudo mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_USER}'@'localhost' WITH GRANT OPTION"
+
+   - run:
+      name: Set user permissions
+      command: |
+        sudo mysql -u root -e "FLUSH PRIVILEGES"
+
+   - restore_cache:
+       keys:
+       - v1-dependencies-{{ checksum "Gemfile.lock" }}
+       - v1-dependencies-
+   - run:
+       name: install dependencies
+       command: |
+         bundle install --jobs=4 --retry=3 --path vendor/bundle
+   - save_cache:
+       paths:
+       - ./vendor/bundle
+       key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+   - run: bundle exec rake db:create
+   - run: bundle exec rake db:migrate
+   - run: bundle exec rake db:schema:load
+   - run:
+       name: run tests
+       command: |
+         mkdir /tmp/test-results
+         TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+
+         bundle exec rspec
+   - run:
+       name: run rubocop
+       command: bundle exec rubocop
+
+   - store_test_results:
+       path: /tmp/test-results
+   - store_artifacts:
+       path: /tmp/test-results
+       destination: test-results
+workflows:
+ version: 2
+ workflow:
+   jobs:
+   - build
