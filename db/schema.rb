@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_09_19_205111) do
 
   create_table "contact_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email_address"
+    t.string "email"
     t.boolean "active", default: true
   end
 
