@@ -10,6 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_09_19_143131) do
 
+  create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "telephone_type"
+    t.string "ddi_number", limit: 3
+    t.string "ddd_number", limit: 2
+    t.string "telephone_number", limit: 10
+    t.boolean "active", default: true
+  end
 end
