@@ -5,6 +5,8 @@ RSpec.describe Address, type: :model do
 
   it { should validate_numericality_of(:number), only_integer: true }
 
+  it { should validate_numericality_of(:number) }
+
   it { should validate_presence_of(:street) }
 
   it { should validate_presence_of(:district) }
