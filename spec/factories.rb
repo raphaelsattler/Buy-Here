@@ -44,4 +44,14 @@ FactoryBot.define do
     ddd_number { Faker::Number.between(1, 99) }
     telephone_number { Faker::Number.number(9) }
   end
+
+  factory :installment do
+    digit = Faker::Number.digit
+    value = Faker::Number.decimal(digit.to_i, 2)
+
+    value { value }
+    off { Faker::Number.between(0, 100) }
+    due_date { Faker::Date.forward }
+    payment_date { Faker::Date.forward }
+  end
 end
