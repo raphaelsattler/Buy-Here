@@ -3,7 +3,7 @@ FactoryBot.define do
     address_type { "Home" }
     street { Faker::Address.street_name }
     number { Faker::Address.building_number }
-    complement { ""}
+    complement { "" }
     zip_code { Faker::Address.zip_code }
     district { "Center" }
     city { Faker::Address.city }
