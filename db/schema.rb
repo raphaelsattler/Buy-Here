@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_153238) do
+ActiveRecord::Schema.define(version: 2018_09_20_194238) do
 
   create_table "contact_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
     t.boolean "active", default: true
+  end
+
+  create_table "group_parentships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "parent_group_id"
+    t.index ["group_id"], name: "index_group_parentships_on_group_id"
+    t.index ["parent_group_id"], name: "index_group_parentships_on_parent_group_id"
   end
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -22,4 +29,11 @@ ActiveRecord::Schema.define(version: 2018_09_20_153238) do
     t.boolean "active", default: true
   end
 
+  create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.boolean "active", default: true
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+  end
+
+  add_foreign_key "memberships", "groups"
 end
