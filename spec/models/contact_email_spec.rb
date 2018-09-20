@@ -8,7 +8,7 @@ RSpec.describe ContactEmail, type: :model do
   it { should_not allow_value("@example.com").for(:email) }
 
   it "the active should be true by default" do
-    email = ContactEmail.create!(email: "john@example.com")
+    email = create(:contact_email)
     expect(email.active).to be_truthy
   end
 end
