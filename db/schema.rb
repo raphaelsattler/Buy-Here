@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 2018_09_23_174210) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.boolean "active", default: true, null: false
+    t.decimal "value", precision: 12, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_products_on_code"
+    t.index ["name"], name: "index_products_on_name"
+  end
+
   create_table "quote_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "order", null: false
@@ -40,9 +52,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_174210) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
->>>>>>> Created model Installment and his tests
 
-<<<<<<< HEAD
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
