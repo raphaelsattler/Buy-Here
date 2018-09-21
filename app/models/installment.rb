@@ -5,6 +5,8 @@ class Installment < ApplicationRecord
   validates :payment_date, presence: true
   validates :due_date, presence: true
 
+  belongs_to :payment_method, validate: true
+
   before_validation :calculate_total_value
 
   private
