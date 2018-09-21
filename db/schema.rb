@@ -131,5 +131,18 @@ ActiveRecord::Schema.define(version: 2018_09_23_172348) do
 
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "memberships", "groups"
+
+  create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.decimal "value", precision: 12, scale: 2, default: "0.0", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_services_on_code"
+    t.index ["name"], name: "index_services_on_name"
+  end
+
   add_foreign_key "installments", "payment_methods"
 end
