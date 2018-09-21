@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2018_09_20_153238) do
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -29,4 +31,5 @@ ActiveRecord::Schema.define(version: 2018_09_20_153238) do
     t.string "telephone_number", limit: 10
     t.boolean "active", default: true
   end
+
 end
