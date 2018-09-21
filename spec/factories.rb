@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :group do
-    name { "Sellers" }
+    name { Faker::Job.position }
   end
 
   factory :contact_email do
