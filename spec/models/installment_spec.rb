@@ -23,4 +23,6 @@ RSpec.describe Installment, type: :model do
       expect(installment.total_value.round(2)).to eq(total_value.round(2))
     end
   end
+
+  it { should belong_to(:payment_method).validate(true) }
 end

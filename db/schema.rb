@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2018_09_23_174210) do
     t.date "payment_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "payment_method_id"
+    t.index ["payment_method_id"], name: "index_installments_on_payment_method_id"
+  end
+
+  create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "due", default: false, null: false
+    t.boolean "active", default: true, null: false
+    t.decimal "rate", precision: 10, default: "0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quote_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -31,6 +42,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_174210) do
   end
 >>>>>>> Created model Installment and his tests
 
+<<<<<<< HEAD
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
@@ -115,4 +127,5 @@ ActiveRecord::Schema.define(version: 2018_09_23_174210) do
 
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "memberships", "groups"
+  add_foreign_key "installments", "payment_methods"
 end
