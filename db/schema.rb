@@ -10,18 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_205111) do
+ActiveRecord::Schema.define(version: 2018_09_21_145021) do
+
+  create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "street"
+    t.integer "number"
+    t.string "complement"
+    t.string "zip_code"
+    t.string "district"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.boolean "active", default: true
+    t.bigint "address_type_id"
+    t.index ["address_type_id"], name: "index_addresses_on_address_type_id"
+  end
 
   create_table "contact_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
     t.boolean "active", default: true
   end
 
+  create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: true
+  end
+
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "telephone_type"
     t.string "ddi_number", limit: 3
     t.string "ddd_number", limit: 2
     t.string "telephone_number", limit: 10
     t.boolean "active", default: true
+    t.bigint "telephone_type_id"
+    t.index ["telephone_type_id"], name: "index_telephones_on_telephone_type_id"
   end
+
+  add_foreign_key "addresses", "address_types"
+  add_foreign_key "telephones", "telephone_types"
 end

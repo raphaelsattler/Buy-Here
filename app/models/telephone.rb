@@ -4,4 +4,6 @@ class Telephone < ApplicationRecord
   validates :ddd_number, presence: true, length: { maximum: 2 }
   validates :telephone_number, presence: true, length: { maximum: 10 }
   validates :active, inclusion: { in: [true, false] }
+
+  belongs_to :telephone_type
 end
