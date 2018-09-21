@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_171734) do
+ActiveRecord::Schema.define(version: 2018_09_21_184108) do
 
   create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "off", precision: 4, scale: 2, default: "0.0"
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(version: 2018_09_21_171734) do
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.decimal "value", precision: 12, scale: 2, default: "0.0", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_services_on_code"
+    t.index ["name"], name: "index_services_on_name"
   end
 
   add_foreign_key "installments", "payment_methods"
