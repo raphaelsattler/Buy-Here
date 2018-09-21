@@ -4,4 +4,6 @@ class Service < ApplicationRecord
   validates :description, presence: true
   validates :active, inclusion: [true, false]
   validates :value, numericality: { greater_than_or_equal_to: 0 }, presence: true
+
+  has_many :item, as: :saleable
 end
