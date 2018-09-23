@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_145021) do
+ActiveRecord::Schema.define(version: 2018_09_23_172348) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,26 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.boolean "active", default: true
   end
 
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: true
+  end
+
+  create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+  end
+
+  create_table "perfils", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
@@ -53,5 +73,6 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
   end
 
   add_foreign_key "addresses", "address_types"
+  add_foreign_key "memberships", "groups"
   add_foreign_key "telephones", "telephone_types"
 end
