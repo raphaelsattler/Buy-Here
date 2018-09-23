@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :buy_intention do
+    name { Faker::Pokemon.name }
+  end
+
   factory :profile do
     name { Faker::Pokemon.name }
   end
