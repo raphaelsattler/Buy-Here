@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :role_rule do
+    rule { Rule.first || association(:rule) }
+  end
   factory :rule do
     code { Faker::Lorem.characters(10) }
     permission { Permission.first || association(:permission) }
