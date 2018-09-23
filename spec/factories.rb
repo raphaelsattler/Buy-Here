@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :permission do
+    code { Faker::Lorem.characters(10) }
+    name { Faker::Pokemon.name }
+    description { Faker::Lorem.paragraph }
+  end
   factory :person do
     perfil { Perfil.first || association(:perfil) }
     buy_intention { BuyIntention.first || association(:buy_intention) }
