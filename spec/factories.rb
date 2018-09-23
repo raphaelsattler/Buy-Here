@@ -1,4 +1,13 @@
 FactoryBot.define do
+  factory :user do
+    role { nil }
+    username { "MyString" }
+    email { "MyString" }
+    active { false }
+    password_digest { "MyString" }
+    reset_password_sent_at { "MyString" }
+    token_recovery_expire_at { "2018-09-23 17:16:33" }
+  end
   factory :role do
     name { Faker::Pokemon.name }
   end
@@ -43,6 +52,12 @@ FactoryBot.define do
 
   factory :telephone_type do
     name { Faker::Pokemon.name }
+  factory :membership do
+    group { Group.first || association(:group) }
+  end
+
+  factory :group do
+    name { Faker::Job.position }
   end
 
   factory :contact_email do

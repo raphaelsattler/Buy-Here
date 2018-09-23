@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_195807) do
+ActiveRecord::Schema.define(version: 2018_09_23_201633) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -128,6 +128,19 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
     t.boolean "active", default: true
   end
 
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: true
+  end
+
+  create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+  end
+
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ddi_number", limit: 3
     t.string "ddd_number", limit: 2
@@ -137,6 +150,19 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
     t.bigint "person_id"
     t.index ["person_id"], name: "index_telephones_on_person_id"
     t.index ["telephone_type_id"], name: "index_telephones_on_telephone_type_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "role_id"
+    t.string "username"
+    t.string "email"
+    t.boolean "active", default: true
+    t.string "password_digest"
+    t.string "reset_password_sent_at"
+    t.datetime "token_recovery_expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "addresses", "address_types"
@@ -150,4 +176,6 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
   add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
   add_foreign_key "telephones", "telephone_types"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "users", "roles"
 end
