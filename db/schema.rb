@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_09_21_205324) do
 
   create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
@@ -37,9 +37,6 @@ ActiveRecord::Schema.define(version: 2018_09_21_205324) do
     t.string "telephone_number", limit: 10
     t.boolean "active", default: true
   end
-<<<<<<< Updated upstream
-=======
 
   add_foreign_key "memberships", "groups"
->>>>>>> Stashed changes
 end
