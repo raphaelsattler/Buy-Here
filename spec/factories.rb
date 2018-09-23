@@ -1,31 +1,36 @@
 FactoryBot.define do
   factory :user do
-    role { nil }
-    username { "MyString" }
-    email { "MyString" }
-    active { false }
-    password_digest { "MyString" }
-    reset_password_sent_at { "MyString" }
-    token_recovery_expire_at { "2018-09-23 17:16:33" }
+    role { Role.first || association(:role) }
+    username { Faker::Hobbit.character }
+    email { Faker::Internet.email }
+    password_digest { Faker::Lorem.characters }
+    reset_password_sent_at { Faker::Time.between(DateTime.now - 1, DateTime.now) }
+    token_recovery_expire_at { Faker::Time.between(DateTime.now, DateTime.now + 1) }
   end
+
   factory :role do
     name { Faker::Pokemon.name }
   end
+
   factory :role_rule do
     rule { Rule.first || association(:rule) }
     role { Role.first || association(:role) }
   end
+
   factory :rule do
     code { Faker::Lorem.characters(10) }
     permission { Permission.first || association(:permission) }
     description { Faker::Lorem.paragraph }
   end
+
   factory :permission do
     code { Faker::Lorem.characters(10) }
     name { Faker::Pokemon.name }
     description { Faker::Lorem.paragraph }
   end
+
   factory :person do
+    user { User.first || association(:user) }
     perfil { Perfil.first || association(:perfil) }
     buy_intention { BuyIntention.first || association(:buy_intention) }
     name { Faker::Name.name }
@@ -52,7 +57,10 @@ FactoryBot.define do
 
   factory :telephone_type do
     name { Faker::Pokemon.name }
+  end
+
   factory :membership do
+    user { User.first || association(:user) }
     group { Group.first || association(:group) }
   end
 
