@@ -1,6 +1,10 @@
 FactoryBot.define do
+  factory :role do
+    name { Faker::Pokemon.name }
+  end
   factory :role_rule do
     rule { Rule.first || association(:rule) }
+    role { Role.first || association(:role) }
   end
   factory :rule do
     code { Faker::Lorem.characters(10) }
