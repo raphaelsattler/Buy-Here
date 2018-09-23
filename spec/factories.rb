@@ -3,6 +3,10 @@ FactoryBot.define do
     name { Faker::Pokemon.name }
   end
 
+  factory :buy_intention do
+    name { Faker::Pokemon.name }
+  end
+
   factory :membership do
     group { association(:group) }
   end
