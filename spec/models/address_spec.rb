@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe Address, type: :model do
   let(:address) { create(:address) }
 
+  it { is_expected.to belong_to(:person) }
+
   it { is_expected.to belong_to(:addressable) }
 
   it { is_expected.to validate_numericality_of(:number), only_integer: true }

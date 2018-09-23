@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe Telephone, type: :model do
   let(:telephone) { create(:telephone) }
 
+  it { is_expected.to belong_to(:person) }
+
   it { is_expected.to belong_to(:telephoneable) }
 
   it { is_expected.to validate_presence_of(:ddi_number) }

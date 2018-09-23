@@ -1,5 +1,7 @@
 FactoryBot.define do
-  factory :profile do
+  factory :person do
+    profile { association(:profile) }
+    buy_intention { association(:buy_intention) }
     name { Faker::Name.name }
     social_name { Faker::Name.initials  }
     email { Faker::Internet.email }
@@ -14,16 +16,16 @@ FactoryBot.define do
     name { Faker::Pokemon.name }
   end
 
-  factory :buy_intention do
-    name { Faker::Pokemon.name }
-  end
-
   factory :membership do
     group { association(:group) }
   end
 
   factory :quote_type do
     name { Faker::Name.name }
+  end
+
+  factory :profile do
+    name { Faker::Pokemon.name }
   end
 
   factory :address_type do
@@ -39,10 +41,12 @@ FactoryBot.define do
   end
 
   factory :contact_email do
+    person { association(:person) }
     email { Faker::Internet.email }
   end
 
   factory :address do
+    person { association(:person) }
     addressable { association(:address_type) }
     street { Faker::Address.street_name }
     number { Faker::Address.building_number }
@@ -54,6 +58,7 @@ FactoryBot.define do
   end
 
   factory :telephone do
+    person { association(:person) }
     telephoneable { association(:telephone_type) }
     ddi_number { Faker::Number.between(1, 999) }
     ddd_number { Faker::Number.between(1, 99) }
