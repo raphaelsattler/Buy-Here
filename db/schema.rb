@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_193204) do
+ActiveRecord::Schema.define(version: 2018_09_23_193941) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 2018_09_23_193204) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.bigint "permission_id"
+    t.boolean "active", default: true
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permission_id"], name: "index_rules_on_permission_id"
+  end
+
   create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
@@ -118,6 +128,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_193204) do
   add_foreign_key "memberships", "groups"
   add_foreign_key "people", "buy_intentions"
   add_foreign_key "people", "perfils"
+  add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
   add_foreign_key "telephones", "telephone_types"
 end
