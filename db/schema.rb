@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_205415) do
+ActiveRecord::Schema.define(version: 2018_09_23_215510) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -143,6 +143,16 @@ ActiveRecord::Schema.define(version: 2018_09_23_205415) do
     t.index ["telephone_type_id"], name: "index_telephones_on_telephone_type_id"
   end
 
+  create_table "user_rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "rule_id"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rule_id"], name: "index_user_rules_on_rule_id"
+    t.index ["user_id"], name: "index_user_rules_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "role_id"
     t.string "username"
@@ -169,5 +179,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_205415) do
   add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
   add_foreign_key "telephones", "telephone_types"
+  add_foreign_key "user_rules", "rules"
+  add_foreign_key "user_rules", "users"
   add_foreign_key "users", "roles"
 end

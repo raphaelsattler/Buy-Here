@@ -5,6 +5,10 @@ RSpec.describe Rule, type: :model do
 
   it { should have_many(:roles).through(:role_rules) }
 
+  it { should have_many(:user_rules) }
+
+  it { should have_many(:users).through(:user_rules) }
+
   it { should validate_presence_of(:code) }
 
   it { should validate_uniqueness_of(:code) }

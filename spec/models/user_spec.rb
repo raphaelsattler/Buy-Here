@@ -7,6 +7,10 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:groups).through(:memberships) }
 
+  it { should have_many(:user_rules) }
+
+  it { should have_many(:rules).through(:user_rules) }
+
   it { should validate_presence_of(:username) }
 
   it { should validate_uniqueness_of(:username) }

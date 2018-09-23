@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :user_rule do
+    user { User.first || association(:user) }
+    rule { Rule.first || association(:rule) }
+  end
   factory :user do
     role { Role.first || association(:role) }
     username { Faker::Hobbit.character }
