@@ -9,4 +9,5 @@ class Address < ApplicationRecord
   validates :active, inclusion: { in: [true, false] }
 
   belongs_to :address_type
+  belongs_to :person
 end

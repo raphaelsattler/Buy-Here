@@ -6,4 +6,5 @@ class Telephone < ApplicationRecord
   validates :active, inclusion: { in: [true, false] }
 
   belongs_to :telephone_type
+  belongs_to :person
 end

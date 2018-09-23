@@ -1,6 +1,16 @@
 require "rails_helper"
 
 RSpec.describe Person, type: :model do
+  it { should have_many(:telephones) }
+
+  it { should have_many(:addresses) }
+
+  it { should have_many(:contact_emails) }
+
+  it { should belong_to(:perfil) }
+
+  it { should belong_to(:buy_intention) }
+
   it { should validate_presence_of(:name) }
 
   it { should validate_uniqueness_of(:name) }

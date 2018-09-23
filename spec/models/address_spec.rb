@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Address, type: :model do
+  it { should belong_to(:person) }
+
   it { should belong_to(:address_type) }
 
   it { should validate_numericality_of(:number), only_integer: true }

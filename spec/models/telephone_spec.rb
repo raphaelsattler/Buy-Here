@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Telephone, type: :model do
+  it { should belong_to(:person) }
+
   it { should belong_to(:telephone_type) }
 
   it { should validate_presence_of(:ddi_number) }
