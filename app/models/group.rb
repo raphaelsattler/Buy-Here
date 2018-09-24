@@ -2,4 +2,8 @@ class Group < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   validates :active, inclusion: { in: [true, false] }
+
+  has_many :groups, class_name: "Group", foreign_key: :parent_group_id
+
+  belongs_to :parent_group, class_name: "Group", optional: true
 end

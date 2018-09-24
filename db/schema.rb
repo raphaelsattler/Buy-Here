@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 2018_09_20_153238) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.bigint "parent_group_id"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["parent_group_id"], name: "fk_rails_7886e1bc34"
   end
 
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -32,4 +34,5 @@ ActiveRecord::Schema.define(version: 2018_09_20_153238) do
     t.boolean "active", default: true
   end
 
+  add_foreign_key "groups", "groups", column: "parent_group_id"
 end
