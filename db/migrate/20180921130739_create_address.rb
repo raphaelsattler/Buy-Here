@@ -1,7 +1,7 @@
 class CreateAddress < ActiveRecord::Migration[5.2]
   def change
     create_table :addresses do |t|
-      t.string :address_type
+      t.references :addressable, polymorphic: true, index: true
       t.string :street
       t.integer :number
       t.string :complement
