@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_145021) do
+ActiveRecord::Schema.define(version: 2018_09_21_142743) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
   end
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "addressable_type"
+    t.bigint "addressable_id"
     t.string "street"
     t.integer "number"
     t.string "complement"
@@ -29,8 +31,6 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.string "state"
     t.string "country"
     t.boolean "active", default: true
-    t.string "addressable_type"
-    t.bigint "addressable_id"
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.string "email"
     t.boolean "active", default: true
   end
-  
+
   create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
-    
+
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.bigint "parent_id"
@@ -50,15 +50,17 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "fk_rails_be49f097d1"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "telephoneable_type"
+    t.bigint "telephoneable_id"
     t.string "ddi_number", limit: 3
     t.string "ddd_number", limit: 2
     t.string "telephone_number", limit: 10
     t.boolean "active", default: true
-    t.string "telephoneable_type"
-    t.bigint "telephoneable_id"
     t.index ["telephoneable_type", "telephoneable_id"], name: "index_telephones_on_telephoneable_type_and_telephoneable_id"
   end
 
