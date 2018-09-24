@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :person do
-    perfil { Perfil.first || association(:perfil) }
+    perfil { association(:perfil) }
     buy_intention { BuyIntention.first || association(:buy_intention) }
     name { Faker::Name.name }
     social_name { Faker::Name.initials  }
@@ -20,6 +20,14 @@ FactoryBot.define do
     name { Faker::Pokemon.name }
   end
 
+  factory :membership do
+    group { association(:group) }
+  end
+
+  factory :quote_type do
+    name { Faker::Name.name }
+  end
+
   factory :address_type do
     name { Faker::Pokemon.name }
   end
@@ -28,14 +36,17 @@ FactoryBot.define do
     name { Faker::Pokemon.name }
   end
 
+  factory :group do
+    name { Faker::Job.position }
+  end
   factory :contact_email do
-    person { Person.first || association(:person) }
+    person { association(:person) }
     email { Faker::Internet.email }
   end
 
   factory :address do
-    person { Person.first || association(:person) }
-    address_type { AddressType.first || association(:address_type) }
+    person {  association(:person) }
+    addressable { association(:address_type) }
     street { Faker::Address.street_name }
     number { Faker::Address.building_number }
     zip_code { Faker::Address.zip_code }
@@ -46,8 +57,8 @@ FactoryBot.define do
   end
 
   factory :telephone do
-    person { Person.first || association(:person) }
-    telephone_type { TelephoneType.first || association(:telephone_type) }
+    person { association(:person) }
+    telephoneable { association(:telephone_type) }
     ddi_number { Faker::Number.between(1, 999) }
     ddd_number { Faker::Number.between(1, 99) }
     telephone_number { Faker::Number.number(9) }

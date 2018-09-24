@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  validates :address_type, presence: true
+  validates :addressable, presence: true
   validates :street, presence: true
   validates :number, numericality: { only_integer: true }
   validates :district, presence: true
@@ -8,6 +8,6 @@ class Address < ApplicationRecord
   validates :country, presence: true
   validates :active, inclusion: { in: [true, false] }
 
-  belongs_to :address_type
   belongs_to :person
+  belongs_to :addressable, polymorphic: true
 end
