@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :membership do
     group { Group.first || association(:group) }
+  end
+
   factory :address_type do
     name { Faker::Pokemon.name }
   end
