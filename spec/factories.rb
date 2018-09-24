@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :membership do
     group { association(:group) }
+  end
 
   factory :quote_type do
     name { Faker::Name.name }
