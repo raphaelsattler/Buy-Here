@@ -2,12 +2,19 @@ FactoryBot.define do
   factory :address_type do
     name { Faker::Pokemon.name }
   end
+  
   factory :telephone_type do
     name { Faker::Pokemon.name }
   end
+  
+  factory :group do
+    name { Faker::Job.position }
+  end
+
   factory :contact_email do
     email { Faker::Internet.email }
   end
+  
   factory :address do
     addressable { AddressType.first || association(:address_type) }
     street { Faker::Address.street_name }
@@ -18,6 +25,7 @@ FactoryBot.define do
     state { Faker::Address.state }
     country { Faker::Address.country }
   end
+  
   factory :telephone do
     telephoneable { TelephoneType.first || association(:telephone_type) }
     ddi_number { Faker::Number.between(1, 999) }

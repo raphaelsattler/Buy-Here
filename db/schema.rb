@@ -38,10 +38,18 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.string "email"
     t.boolean "active", default: true
   end
-
+  
   create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
+    
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "parent_id"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "fk_rails_be49f097d1"
   end
 
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,4 +62,5 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.index ["telephoneable_type", "telephoneable_id"], name: "index_telephones_on_telephoneable_type_and_telephoneable_id"
   end
 
+  add_foreign_key "groups", "groups", column: "parent_id"
 end
