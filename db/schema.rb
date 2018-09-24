@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.string "state"
     t.string "country"
     t.boolean "active", default: true
-    t.bigint "address_type_id"
-    t.index ["address_type_id"], name: "index_addresses_on_address_type_id"
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
   create_table "contact_emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,10 +49,9 @@ ActiveRecord::Schema.define(version: 2018_09_21_145021) do
     t.string "ddd_number", limit: 2
     t.string "telephone_number", limit: 10
     t.boolean "active", default: true
-    t.bigint "telephone_type_id"
-    t.index ["telephone_type_id"], name: "index_telephones_on_telephone_type_id"
+    t.string "telephoneable_type"
+    t.bigint "telephoneable_id"
+    t.index ["telephoneable_type", "telephoneable_id"], name: "index_telephones_on_telephoneable_type_and_telephoneable_id"
   end
 
-  add_foreign_key "addresses", "address_types"
-  add_foreign_key "telephones", "telephone_types"
 end
