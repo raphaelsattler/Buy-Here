@@ -6,21 +6,21 @@ RSpec.describe Service, type: :model do
   it { should validate_presence_of(:code) }
   it { should validate_length_of(:code).is_at_most(255) }
   it "Uniqueness of code" do
-    create(:product)
+    create(:service)
     validate_uniqueness_of(:code)
   end
 
   it { should validate_length_of(:name).is_at_most(255) }
   it { should validate_presence_of(:name) }
   it "Uniqueness of name" do
-    create(:product)
+    create(:service)
     validate_uniqueness_of(:name)
   end
 
   it { should validate_presence_of(:description) }
 
   it "Default active true" do
-    product = create(:product)
+    product = create(:service)
     expect(product.active).to be_truthy
   end
 
