@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :membership do
     group { association(:group) }
+
+  factory :quote_type do
+    name { Faker::Name.name }
   end
 
   factory :address_type do
@@ -14,7 +17,6 @@ FactoryBot.define do
   factory :group do
     name { Faker::Job.position }
   end
-
   factory :contact_email do
     email { Faker::Internet.email }
   end
