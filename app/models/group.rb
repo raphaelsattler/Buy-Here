@@ -3,7 +3,7 @@ class Group < ApplicationRecord
 
   validates :active, inclusion: { in: [true, false] }
 
-  has_many :groups, class_name: "Group", foreign_key: :parent_group_id
+  has_many :groups, class_name: "Group", foreign_key: :parent_id
 
-  belongs_to :parent_group, class_name: "Group", optional: true
+  belongs_to :parent, class_name: "Group", optional: true
 end
