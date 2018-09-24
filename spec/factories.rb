@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :perfil do
+  factory :profile do
     name { Faker::Pokemon.name }
   end
   factory :address_type do

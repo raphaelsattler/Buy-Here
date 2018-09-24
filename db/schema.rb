@@ -48,15 +48,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172348) do
     t.index ["parent_id"], name: "fk_rails_be49f097d1"
   end
 
-  create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "group_id"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_memberships_on_group_id"
-  end
-
-  create_table "perfils", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
@@ -81,5 +73,4 @@ ActiveRecord::Schema.define(version: 2018_09_23_172348) do
   end
 
   add_foreign_key "groups", "groups", column: "parent_id"
-  add_foreign_key "memberships", "groups"
 end
