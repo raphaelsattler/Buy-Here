@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.5.1"
 
+gem "activemodel-email_address_validator", "~> 1.0", ">= 1.0.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.1"
 # Use mysql as the database for Active Record
@@ -41,6 +42,7 @@ group :development, :test do
   gem "rspec-rails", "~> 3.8"
   gem "rubocop-rspec", "~> 1.29", ">= 1.29.1"
   gem "factory_bot_rails", "~> 4.11", ">= 4.11.1"
+  gem "faker", "~> 1.9", ">= 1.9.1"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
 end
