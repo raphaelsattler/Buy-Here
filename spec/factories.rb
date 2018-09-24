@@ -15,11 +15,11 @@ FactoryBot.define do
   factory :telephone_type do
     name { Faker::Pokemon.name }
   end
-  
+
   factory :group do
     name { Faker::Job.position }
   end
-  
+
   factory :contact_email do
     email { Faker::Internet.email }
   end
