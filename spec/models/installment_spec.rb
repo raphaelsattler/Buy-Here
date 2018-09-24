@@ -15,7 +15,7 @@ RSpec.describe Installment, type: :model do
   it { should validate_numericality_of(:total_value).is_greater_than_or_equal_to(0) }
   it { should validate_presence_of(:total_value) }
 
-  context "when validate calculates total value" do
+  context "when validates calculates total value" do
     let(:installment) { create(:installment) }
     let(:value) { installment.value }
     let(:off) { installment.off }
