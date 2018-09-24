@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :installment do
     digit = Faker::Number.digit
     value = Faker::Number.decimal(digit.to_i, 2)
@@ -9,7 +8,7 @@ FactoryBot.define do
     due_date { Faker::Date.forward }
     payment_date { Faker::Date.forward }
   end
-  
+
   factory :profile do
     name { Faker::Pokemon.name }
   end
@@ -17,7 +16,7 @@ FactoryBot.define do
   factory :membership do
     group { association(:group) }
   end
-  
+
   factory :quote_type do
     name { Faker::Name.name }
   end
