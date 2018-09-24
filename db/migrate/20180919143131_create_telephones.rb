@@ -1,7 +1,7 @@
 class CreateTelephones < ActiveRecord::Migration[5.2]
   def change
     create_table :telephones do |t|
-      t.string :telephone_type
+      t.references :telephoneable, polymorphic: true, index: true
       t.string :ddi_number, limit: 3
       t.string :ddd_number, limit: 2
       t.string :telephone_number, limit: 10
