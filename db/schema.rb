@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2018_09_23_172348) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
