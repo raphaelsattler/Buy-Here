@@ -1,3 +1,3 @@
-class Perfil < ApplicationRecord
+class Profile < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 end
