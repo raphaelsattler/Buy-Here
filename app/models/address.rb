@@ -8,6 +8,7 @@ class Address < ApplicationRecord
   validates :country, presence: true
   validates :active, inclusion: { in: [true, false] }
 
+  belongs_to :person
   belongs_to :addressable, polymorphic: true
   belongs_to :person
 end
