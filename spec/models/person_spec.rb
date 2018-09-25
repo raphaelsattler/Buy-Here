@@ -4,7 +4,7 @@ RSpec.describe Person, type: :model do
   it { is_expected.to have_many(:telephones) }
   it { is_expected.to have_many(:addresses) }
   it { is_expected.to have_many(:contact_emails) }
-  it { is_expected.to belong_to(:perfil) }
+  it { is_expected.to belong_to(:profile) }
   it { is_expected.to belong_to(:buy_intention) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_uniqueness_of(:name) }

@@ -79,10 +79,19 @@ ActiveRecord::Schema.define(version: 2018_09_23_193204) do
     t.string "uf_expediter_rg", limit: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "perfil_id"
+    t.bigint "profile_id"
     t.bigint "buy_intention_id"
     t.index ["buy_intention_id"], name: "index_people_on_buy_intention_id"
-    t.index ["perfil_id"], name: "index_people_on_perfil_id"
+    t.index ["profile_id"], name: "index_people_on_profile_id"
+  end
+
+  create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.boolean "active", default: true
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -95,15 +104,6 @@ ActiveRecord::Schema.define(version: 2018_09_23_193204) do
   create_table "quote_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "active", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
-    t.boolean "active", default: true
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -127,14 +127,11 @@ ActiveRecord::Schema.define(version: 2018_09_23_193204) do
     t.index ["telephoneable_type", "telephoneable_id"], name: "index_telephones_on_telephoneable_type_and_telephoneable_id"
   end
 
-  add_foreign_key "addresses", "address_types"
   add_foreign_key "addresses", "people"
   add_foreign_key "contact_emails", "people"
-  add_foreign_key "memberships", "groups"
-  add_foreign_key "people", "buy_intentions"
-  add_foreign_key "people", "perfils"
-  add_foreign_key "telephones", "people"
-  add_foreign_key "telephones", "telephone_types"
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "memberships", "groups"
+  add_foreign_key "people", "buy_intentions"
+  add_foreign_key "people", "profiles"
+  add_foreign_key "telephones", "people"
 end
