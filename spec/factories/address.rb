@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :address do
-    person { Person.first || association(:person) }
-    address_type { AddressType.first || association(:address_type) }
+    person { association(:person) }
+    addressable { association(:address_type) }
     street { Faker::Address.street_name }
     number { Faker::Address.building_number }
     zip_code { Faker::Address.zip_code }

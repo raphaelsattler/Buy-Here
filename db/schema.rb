@@ -14,12 +14,14 @@ ActiveRecord::Schema.define(version: 2018_09_23_193941) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "addressable_type"
+    t.bigint "addressable_id"
     t.string "street"
     t.integer "number"
     t.string "complement"
@@ -29,9 +31,8 @@ ActiveRecord::Schema.define(version: 2018_09_23_193941) do
     t.string "state"
     t.string "country"
     t.boolean "active", default: true
-    t.bigint "address_type_id"
     t.bigint "person_id"
-    t.index ["address_type_id"], name: "index_addresses_on_address_type_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
     t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
@@ -51,7 +52,11 @@ ActiveRecord::Schema.define(version: 2018_09_23_193941) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.bigint "parent_id"
     t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "fk_rails_be49f097d1"
   end
 
   create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,17 +79,10 @@ ActiveRecord::Schema.define(version: 2018_09_23_193941) do
     t.string "uf_expediter_rg", limit: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "perfil_id"
+    t.bigint "profile_id"
     t.bigint "buy_intention_id"
     t.index ["buy_intention_id"], name: "index_people_on_buy_intention_id"
-    t.index ["perfil_id"], name: "index_people_on_perfil_id"
-  end
-
-  create_table "perfils", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_people_on_profile_id"
   end
 
   create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,6 +90,20 @@ ActiveRecord::Schema.define(version: 2018_09_23_193941) do
     t.string "name"
     t.boolean "active", default: true
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quote_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -109,26 +121,28 @@ ActiveRecord::Schema.define(version: 2018_09_23_193941) do
   create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "telephoneable_type"
+    t.bigint "telephoneable_id"
     t.string "ddi_number", limit: 3
     t.string "ddd_number", limit: 2
     t.string "telephone_number", limit: 10
     t.boolean "active", default: true
-    t.bigint "telephone_type_id"
     t.bigint "person_id"
     t.index ["person_id"], name: "index_telephones_on_person_id"
-    t.index ["telephone_type_id"], name: "index_telephones_on_telephone_type_id"
+    t.index ["telephoneable_type", "telephoneable_id"], name: "index_telephones_on_telephoneable_type_and_telephoneable_id"
   end
 
-  add_foreign_key "addresses", "address_types"
   add_foreign_key "addresses", "people"
   add_foreign_key "contact_emails", "people"
+  add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "memberships", "groups"
   add_foreign_key "people", "buy_intentions"
-  add_foreign_key "people", "perfils"
+  add_foreign_key "people", "profiles"
   add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
-  add_foreign_key "telephones", "telephone_types"
 end
