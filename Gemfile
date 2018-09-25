@@ -4,8 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.5.1"
 
 gem "activemodel-email_address_validator", "~> 1.0", ">= 1.0.1"
+<<<<<<< HEAD
 gem "cpf_cnpj", "~> 0.5.0"
 gem "validators", "~> 2.8"
+=======
+>>>>>>> Merged development
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.1"
 # Use mysql as the database for Active Record

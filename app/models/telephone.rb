@@ -5,6 +5,9 @@ class Telephone < ApplicationRecord
   validates :telephone_number, presence: true, length: { maximum: 10 }
   validates :active, inclusion: { in: [true, false] }
 
+<<<<<<< HEAD
   belongs_to :person
+=======
+>>>>>>> Merged development
   belongs_to :telephoneable, polymorphic: true
 end
