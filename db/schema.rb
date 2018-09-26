@@ -12,6 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2018_09_23_193204) do
 
+  create_table "quote_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "order", null: false
+  end
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
