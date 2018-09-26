@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :people
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
+  has_many :user_rules, dependent: :destroy
+  has_many :rules, through: :user_rules
 
   belongs_to :role
 end
