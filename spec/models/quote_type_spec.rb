@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe QuoteType, type: :model do
+  let(:quote_type) { create(:quote_type) }
+
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_length_of(:name).is_at_most(255) }
 
@@ -10,7 +12,6 @@ RSpec.describe QuoteType, type: :model do
   end
 
   it "Defaults active to true" do
-    quote_type = create(:quote_type)
     expect(quote_type.active).to be_truthy
   end
 end
