@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Permission, type: :model do
+  let(:permission) { create(:permission) }
+
   it { is_expected.to have_many(:rules) }
   it { is_expected.to validate_presence_of(:code) }
   it { is_expected.to validate_uniqueness_of(:code) }
@@ -9,8 +11,6 @@ RSpec.describe Permission, type: :model do
   it { is_expected.to validate_presence_of(:description) }
 
   it "the active should be true by default" do
-    permission = create(:permission)
-
     expect(permission.active).to be_truthy
   end
 end
