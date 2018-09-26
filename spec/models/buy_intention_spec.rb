@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe BuyIntention, type: :model do
   let(:buy_intention) { create(:buy_intention) }
-  
+
   it { is_expected.to have_many(:people) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_uniqueness_of(:name) }

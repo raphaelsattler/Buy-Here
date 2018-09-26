@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Person, type: :model do
+  let(:person) { create(:person) }
+
   it {  is_expected.to have_many(:telephones) }
   it {  is_expected.to have_many(:addresses) }
   it {  is_expected.to have_many(:contact_emails) }
@@ -19,8 +21,6 @@ RSpec.describe Person, type: :model do
   it {  is_expected.to validate_length_of(:uf_expediter_rg) }
 
   it "the active should be true by default" do
-    person = create(:person)
-
     expect(person.active).to be_truthy
   end
 end
