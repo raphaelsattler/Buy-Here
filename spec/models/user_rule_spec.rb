@@ -1,13 +1,12 @@
 require "rails_helper"
 
 RSpec.describe UserRule, type: :model do
-  it { should belong_to(:user) }
+  let(:user_rule) { create(:user_rule) }
 
-  it { should belong_to(:rule) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to belong_to(:rule) }
 
   it "the active should be true by default" do
-    user_rule = create(:user_rule)
-
     expect(user_rule.active).to be_truthy
   end
 end
