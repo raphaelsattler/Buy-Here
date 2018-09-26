@@ -9,7 +9,7 @@ RSpec.describe Person, type: :model do
 
   it { should belong_to(:user) }
 
-  it { should belong_to(:perfil) }
+  it { should belong_to(:profile) }
 
   it { should belong_to(:buy_intention) }
 

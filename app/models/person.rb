@@ -13,6 +13,6 @@ class Person < ApplicationRecord
   has_many :contact_emails, dependent: :destroy
 
   belongs_to :user
-  belongs_to :perfil
+  belongs_to :profile
   belongs_to :buy_intention
 end
