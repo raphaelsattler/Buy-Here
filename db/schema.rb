@@ -173,7 +173,17 @@ ActiveRecord::Schema.define(version: 2018_09_24_144754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
+  create_table "rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.bigint "permission_id"
+    t.boolean "active", default: true
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permission_id"], name: "index_rules_on_permission_id"
+  end
+
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code", null: false
     t.decimal "request_value", precision: 12, scale: 2, null: false
@@ -230,5 +240,6 @@ ActiveRecord::Schema.define(version: 2018_09_24_144754) do
   add_foreign_key "requests", "items"
   add_foreign_key "people", "buy_intentions"
   add_foreign_key "people", "profiles"
+  add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
 end
