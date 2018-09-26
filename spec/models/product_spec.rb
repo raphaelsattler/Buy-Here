@@ -10,17 +10,17 @@ RSpec.describe Product, type: :model do
   it { should validate_presence_of(:description) }
   it { is_expected.to validate_numericality_of(:value).is_greater_than_or_equal_to(0) }
   it { is_expected.to validate_presence_of(:value) }
-  
+
   it "Uniqueness of code" do
     create(:product)
     validate_uniqueness_of(:code)
   end
-  
+
   it "Uniqueness of name" do
     create(:product)
     validate_uniqueness_of(:name)
   end
-  
+
   it "Default active true" do
     product = create(:product)
     expect(product.active).to be_truthy
