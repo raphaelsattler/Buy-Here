@@ -1,4 +1,4 @@
-class Perfil < ApplicationRecord
+class Profile < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :active, inclusion: { in: [true, false] }
 

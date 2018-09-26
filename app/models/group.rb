@@ -4,4 +4,7 @@ class Group < ApplicationRecord
 
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
+  has_many :groups, class_name: "Group", foreign_key: :parent_id
+
+  belongs_to :parent, class_name: "Group", optional: true
 end
