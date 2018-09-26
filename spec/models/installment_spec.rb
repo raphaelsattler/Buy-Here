@@ -17,7 +17,7 @@ RSpec.describe Installment, type: :model do
     let(:value) { installment.value }
     let(:off) { installment.off }
     let(:total_value) { value - (value * (off / 100)) }
-    
+
     it "calculate total value" do
       expect(installment.total_value.round(2)).to eq(total_value.round(2))
     end
