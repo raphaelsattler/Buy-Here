@@ -9,8 +9,6 @@ RSpec.describe Role, type: :model do
   it { is_expected.to validate_uniqueness_of(:name) }
 
   it "the active should be true by default" do
-    role = create(:role)
-
     expect(role.active).to be_truthy
   end
 end
