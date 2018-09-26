@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
   end
 
   create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "off", precision: 5, scale: 2, default: "0.0"
+    t.decimal "off", precision: 4, scale: 2, default: "0.0"
     t.decimal "value", precision: 12, scale: 2, null: false
     t.decimal "total_value", precision: 12, scale: 2, null: false
     t.date "due_date", null: false
@@ -211,9 +211,6 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
   add_foreign_key "contact_emails", "people"
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "installments", "payment_methods"
-  add_foreign_key "memberships", "groups"
-  add_foreign_key "people", "buy_intentions"
-  add_foreign_key "people", "profiles"
   add_foreign_key "memberships", "groups"
   add_foreign_key "people", "buy_intentions"
   add_foreign_key "people", "profiles"

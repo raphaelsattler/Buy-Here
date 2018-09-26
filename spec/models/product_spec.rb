@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Product, type: :model do
+  let(:product) { create(:product) }
+
   it { is_expected.to validate_numericality_of(:code).only_integer }
   it { is_expected.to validate_numericality_of(:code).is_greater_than(0) }
   it { is_expected.to validate_presence_of(:code) }
@@ -12,17 +14,14 @@ RSpec.describe Product, type: :model do
   it { is_expected.to validate_presence_of(:value) }
 
   it "Uniqueness of code" do
-    create(:product)
     validate_uniqueness_of(:code)
   end
 
   it "Uniqueness of name" do
-    create(:product)
     validate_uniqueness_of(:name)
   end
 
   it "Default active true" do
-    product = create(:product)
     expect(product.active).to be_truthy
   end
 end
