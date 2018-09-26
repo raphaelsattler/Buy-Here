@@ -3,6 +3,7 @@ class Rule < ApplicationRecord
   validates :description, presence: true
 
   has_many :role_rules
+  has_many :roles, through: :role_rules
 
   belongs_to :permission
 end
