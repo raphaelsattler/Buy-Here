@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_194602) do
+ActiveRecord::Schema.define(version: 2018_09_23_195807) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_194602) do
   end
 
   create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "off", precision: 4, scale: 2, default: "0.0"
+    t.decimal "off", precision: 5, scale: 2, default: "0.0"
     t.decimal "value", precision: 12, scale: 2, null: false
     t.decimal "total_value", precision: 12, scale: 2, null: false
     t.date "due_date", null: false
@@ -154,7 +154,16 @@ ActiveRecord::Schema.define(version: 2018_09_23_194602) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_role_rules_on_role_id"
     t.index ["rule_id"], name: "index_role_rules_on_rule_id"
+  end
+
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -205,6 +214,10 @@ ActiveRecord::Schema.define(version: 2018_09_23_194602) do
   add_foreign_key "memberships", "groups"
   add_foreign_key "people", "buy_intentions"
   add_foreign_key "people", "profiles"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "people", "buy_intentions"
+  add_foreign_key "people", "profiles"
+  add_foreign_key "role_rules", "roles"
   add_foreign_key "role_rules", "rules"
   add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
