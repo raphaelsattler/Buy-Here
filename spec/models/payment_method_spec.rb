@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe PaymentMethod, type: :model do
   let(:payment_method) { create(:payment_method) }
-  
+
   it { is_expected.to have_many(:installments) }
   it { is_expected.to validate_length_of(:name).is_at_most(255) }
   it { is_expected.to validate_presence_of(:name) }

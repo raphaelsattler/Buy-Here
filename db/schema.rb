@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
   end
 
   create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", default: " ", null: false
     t.boolean "due", default: false, null: false
     t.boolean "active", default: true, null: false
     t.decimal "rate", precision: 10, default: "0", null: false
