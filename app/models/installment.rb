@@ -9,7 +9,7 @@ class Installment < ApplicationRecord
 
   private
 
-    def calculate_total_value
-      self.total_value = value - (value * off / 100) if value
-    end
+  def calculate_total_value
+    self.total_value = value - (value * off / 100) if value
+  end
 end
