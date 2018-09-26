@@ -9,4 +9,5 @@ class Address < ApplicationRecord
   validates :active, inclusion: { in: [true, false] }
 
   belongs_to :addressable, polymorphic: true
+  belongs_to :person
 end
