@@ -10,6 +10,6 @@ FactoryBot.define do
     cnpj { CNPJ.generate }
     rg { Faker::IDNumber.valid }
     expediter_rg { Faker::GameOfThrones.house }
-    uf_expediter_rg { Faker::Lorem.characters(2) }
+    uf_expediter_rg { Faker::Address.state_abbr }
   end
 end

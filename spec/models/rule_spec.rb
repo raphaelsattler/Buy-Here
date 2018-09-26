@@ -1,19 +1,15 @@
 require "rails_helper"
 
 RSpec.describe Rule, type: :model do
-  it { should have_many(:role_rules) }
+  let(:rule) { create(:rule) }
 
-  it { should have_many(:roles).through(:role_rules) }
-
-  it { should validate_presence_of(:code) }
-
-  it { should validate_uniqueness_of(:code) }
-
-  it { should validate_presence_of(:description) }
+  it { is_expected.to have_many(:role_rules) }
+  it { is_expected.to have_many(:roles).through(:role_rules) }
+  it { is_expected.to validate_presence_of(:code) }
+  it { is_expected.to validate_uniqueness_of(:code) }
+  it { is_expected.to validate_presence_of(:description) }
 
   it "the active should be true by default" do
-    rule = create(:rule)
-
     expect(rule.active).to be_truthy
   end
 end

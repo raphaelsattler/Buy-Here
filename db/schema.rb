@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2018_09_23_205415) do
     t.index ["parent_id"], name: "fk_rails_be49f097d1"
   end
 
+  create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "off", precision: 5, scale: 2, default: "0.0"
+    t.decimal "value", precision: 12, scale: 2, null: false
+    t.decimal "total_value", precision: 12, scale: 2, null: false
+    t.date "due_date", null: false
+    t.date "payment_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id"
     t.boolean "active", default: true
@@ -101,6 +111,14 @@ ActiveRecord::Schema.define(version: 2018_09_23_205415) do
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quote_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "order", null: false
+    t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
