@@ -60,13 +60,15 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
   end
 
   create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "off", precision: 5, scale: 2, default: "0.0"
+    t.decimal "off", precision: 4, scale: 2, default: "0.0"
     t.decimal "value", precision: 12, scale: 2, null: false
     t.decimal "total_value", precision: 12, scale: 2, null: false
     t.date "due_date", null: false
     t.date "payment_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "payment_method_id"
+    t.index ["payment_method_id"], name: "index_installments_on_payment_method_id"
   end
 
   create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,6 +79,15 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
     t.bigint "user_id"
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", default: " ", null: false
+    t.boolean "due", default: false, null: false
+    t.boolean "active", default: true, null: false
+    t.decimal "rate", precision: 10, default: "0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -106,6 +117,18 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.boolean "active", default: true, null: false
+    t.decimal "value", precision: 12, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_products_on_code"
+    t.index ["name"], name: "index_products_on_name"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -157,6 +180,18 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
     t.index ["permission_id"], name: "index_rules_on_permission_id"
   end
 
+  create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.decimal "value", precision: 12, scale: 2, default: "0.0", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_services_on_code"
+    t.index ["name"], name: "index_services_on_name"
+  end
+
   create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
@@ -202,6 +237,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
   add_foreign_key "addresses", "people"
   add_foreign_key "contact_emails", "people"
   add_foreign_key "groups", "groups", column: "parent_id"
+  add_foreign_key "installments", "payment_methods"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
   add_foreign_key "people", "buy_intentions"
