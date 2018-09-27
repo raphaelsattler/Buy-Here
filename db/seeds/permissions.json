@@ -1,0 +1,29 @@
+{
+  "permissions": [
+    {
+      "code": "1",
+      "name": "Create",
+      "description": "Permit create new entries."
+    },
+    {
+      "code": "2",
+      "name": "Read",
+      "description": "Permit read, retrieve, search, or view existing entries."
+    },
+    {
+      "code": "3",
+      "name": "Update",
+      "description": "Permit update or edit existing entries."
+    },
+    {
+      "code": "4",
+      "name": "Delete",
+      "description": "Permit delete/deactivate/remove existing entries."
+    },
+    {
+      "code": "5",
+      "name": "Export",
+      "description": "Permit export existing entries."
+    }
+  ]
+}
