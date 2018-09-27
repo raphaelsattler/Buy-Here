@@ -12,6 +12,7 @@ RSpec.describe Product, type: :model do
   it { is_expected.to validate_presence_of(:description) }
   it { is_expected.to validate_numericality_of(:value).is_greater_than_or_equal_to(0) }
   it { is_expected.to validate_presence_of(:value) }
+  it { is_expected.to have_many(:items) }
 
   it "Uniqueness of code" do
     validate_uniqueness_of(:code)

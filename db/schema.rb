@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(version: 2018_09_27_190740) do
     t.index ["payment_method_id"], name: "index_installments_on_payment_method_id"
   end
 
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "saleable_type"
+    t.bigint "saleable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["saleable_type", "saleable_id"], name: "index_items_on_saleable_type_and_saleable_id"
+  end
+
   create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id"
     t.boolean "active", default: true
