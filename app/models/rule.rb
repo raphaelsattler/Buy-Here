@@ -9,4 +9,5 @@ class Rule < ApplicationRecord
   has_many :users, through: :user_rules
 
   belongs_to :permission
+  belongs_to :models_list
 end
