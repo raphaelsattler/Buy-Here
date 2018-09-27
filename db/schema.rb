@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
   end
 
   create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "off", precision: 4, scale: 2, default: "0.0"
+    t.decimal "off", precision: 5, scale: 2, default: "0.0"
     t.decimal "value", precision: 12, scale: 2, null: false
     t.decimal "total_value", precision: 12, scale: 2, null: false
     t.date "due_date", null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
   end
 
   create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", default: " ", null: false
+    t.string "name", default: "", null: false
     t.boolean "due", default: false, null: false
     t.boolean "active", default: true, null: false
     t.decimal "rate", precision: 10, default: "0", null: false
@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
   end
 
   create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "code", null: false
-    t.string "name", null: false
+    t.string "code", default: "", null: false
+    t.string "name", default: "", null: false
     t.text "description"
     t.decimal "value", precision: 12, scale: 2, default: "0.0", null: false
     t.boolean "active", default: true, null: false
