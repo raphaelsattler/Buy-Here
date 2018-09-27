@@ -156,6 +156,17 @@ ActiveRecord::Schema.define(version: 2018_09_23_215510) do
   create_table "role_rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "rule_id"
     t.boolean "active", default: true
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permission_id"], name: "index_rules_on_permission_id"
+  end
+
+  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", null: false
+    t.decimal "request_value", precision: 12, scale: 2, null: false
+    t.decimal "off", precision: 4, scale: 2, default: "0.0", null: false
+    t.decimal "total_value", precision: 12, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "role_id"

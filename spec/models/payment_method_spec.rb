@@ -14,10 +14,6 @@ RSpec.describe PaymentMethod, type: :model do
   end
 
   it "Default to due false" do
-    expect(payment_method.due).to_not be_truthy
-  end
-
-  it "Default to active true" do
     expect(payment_method.active).to be_truthy
   end
 end
