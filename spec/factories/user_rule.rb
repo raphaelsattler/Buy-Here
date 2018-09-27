@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :membership do
+  factory :user_rule do
     user { association(:user) }
-    group { association(:group) }
+    rule { association(:rule) }
   end
 end

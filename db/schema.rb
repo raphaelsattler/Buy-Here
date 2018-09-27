@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_195807) do
+ActiveRecord::Schema.define(version: 2018_09_23_215510) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
   end
 
   create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "off", precision: 5, scale: 2, default: "0.0"
+    t.decimal "off", precision: 4, scale: 2, default: "0.0"
     t.decimal "value", precision: 12, scale: 2, null: false
     t.decimal "total_value", precision: 12, scale: 2, null: false
     t.date "due_date", null: false
@@ -76,7 +76,18 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", default: " ", null: false
+    t.boolean "due", default: false, null: false
+    t.boolean "active", default: true, null: false
+    t.decimal "rate", precision: 10, default: "0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,8 +104,10 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
     t.datetime "updated_at", null: false
     t.bigint "profile_id"
     t.bigint "buy_intention_id"
+    t.bigint "user_id"
     t.index ["buy_intention_id"], name: "index_people_on_buy_intention_id"
     t.index ["profile_id"], name: "index_people_on_profile_id"
+    t.index ["user_id"], name: "index_people_on_user_id"
   end
 
   create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -178,6 +191,18 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
     t.index ["permission_id"], name: "index_rules_on_permission_id"
   end
 
+  create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.decimal "value", precision: 12, scale: 2, default: "0.0", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_services_on_code"
+    t.index ["name"], name: "index_services_on_name"
+  end
+
   create_table "telephone_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
@@ -197,15 +222,43 @@ ActiveRecord::Schema.define(version: 2018_09_23_195807) do
     t.index ["telephoneable_type", "telephoneable_id"], name: "index_telephones_on_telephoneable_type_and_telephoneable_id"
   end
 
+  create_table "user_rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "rule_id"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rule_id"], name: "index_user_rules_on_rule_id"
+    t.index ["user_id"], name: "index_user_rules_on_user_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "role_id"
+    t.string "username"
+    t.string "email"
+    t.boolean "active", default: true
+    t.string "password_digest"
+    t.string "reset_password_sent_at"
+    t.datetime "token_recovery_expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_users_on_role_id"
+  end
+
   add_foreign_key "addresses", "people"
   add_foreign_key "contact_emails", "people"
   add_foreign_key "groups", "groups", column: "parent_id"
   add_foreign_key "installments", "payment_methods"
   add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "users"
   add_foreign_key "people", "buy_intentions"
   add_foreign_key "people", "profiles"
+  add_foreign_key "people", "users"
   add_foreign_key "role_rules", "roles"
   add_foreign_key "role_rules", "rules"
   add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
+  add_foreign_key "user_rules", "rules"
+  add_foreign_key "user_rules", "users"
+  add_foreign_key "users", "roles"
 end

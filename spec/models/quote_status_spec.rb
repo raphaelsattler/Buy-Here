@@ -14,7 +14,7 @@ RSpec.describe QuoteStatus, type: :model do
   end
 
   describe "validations" do
-    subject { quote_status = build(:quote_status) }
+    subject { build(:quote_status) }
     it { is_expected.to validate_uniqueness_of(:name) }
   end
 end

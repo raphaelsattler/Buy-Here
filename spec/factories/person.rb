@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :person do
+    user { association(:user) }
     profile { association(:profile) }
     buy_intention { association(:buy_intention) }
     name { Faker::Name.name }
