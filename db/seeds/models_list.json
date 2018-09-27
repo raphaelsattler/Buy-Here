@@ -1,0 +1,108 @@
+{
+  "models": [
+    {
+      "code": "1000",
+      "name": "User"
+    },
+    {
+      "code": "2000",
+      "name": "Person"
+    },
+    {
+      "code": "3000",
+      "name": "TelephoneType"
+    },
+    {
+      "code": "4000",
+      "name": "Telephone"
+    },
+    {
+      "code": "5000",
+      "name": "AddressType"
+    },
+    {
+      "code": "6000",
+      "name": "Address"
+    },
+    {
+      "code": "7000",
+      "name": "ContactEmail"
+    },
+    {
+      "code": "8000",
+      "name": "Profile"
+    },
+    {
+      "code": "9000",
+      "name": "BuyIntention"
+    },
+    {
+      "code": "10000",
+      "name": "Group"
+    },
+    {
+      "code": "11000",
+      "name": "Membership"
+    },
+    {
+      "code": "12000",
+      "name": "Permission"
+    },
+    {
+      "code": "13000",
+      "name": "ModelsList"
+    },
+    {
+      "code": "14000",
+      "name": "Rule"
+    },
+    {
+      "code": "15000",
+      "name": "UserRule"
+    },
+    {
+      "code": "16000",
+      "name": "RoleRule"
+    },
+    {
+      "code": "17000",
+      "name": "Role"
+    },
+    {
+      "code": "18000",
+      "name": "Service"
+    },
+    {
+      "code": "19000",
+      "name": "Product"
+    },
+    {
+      "code": "20000",
+      "name": "Item"
+    },
+    {
+      "code": "21000",
+      "name": "Request"
+    },
+    {
+      "code": "22000",
+      "name": "Quote"
+    },
+    {
+      "code": "23000",
+      "name": "PaymentMethod"
+    },
+    {
+      "code": "24000",
+      "name": "Installment"
+    },
+    {
+      "code": "25000",
+      "name": "QuoteStatus"
+    },
+    {
+      "code": "26000",
+      "name": "QuoteType"
+    }
+  ]
+}
