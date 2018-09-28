@@ -4,5 +4,4 @@ RSpec.describe Item, type: :model do
   let(:item) { create(:item) }
 
   it { is_expected.to belong_to(:saleable) }
-  it { is_expected.to have_many(:requests) }
 end
