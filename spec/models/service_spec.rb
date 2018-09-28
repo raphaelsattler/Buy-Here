@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe Product, type: :model do
-  let(:product) { create(:product) }
+RSpec.describe Service, type: :model do
+  let(:service) { create(:service) }
 
   it { is_expected.to validate_numericality_of(:code).only_integer }
   it { is_expected.to validate_numericality_of(:code).is_greater_than(0) }
@@ -15,14 +15,14 @@ RSpec.describe Product, type: :model do
   it { is_expected.to have_many(:items) }
 
   it "Uniqueness of code" do
-    validate_uniqueness_of(:code)
+    is_expected.to validate_uniqueness_of(:code).case_insensitive
   end
 
   it "Uniqueness of name" do
-    validate_uniqueness_of(:name)
+    is_expected.to validate_uniqueness_of(:name).case_insensitive
   end
 
   it "Default active true" do
-    expect(product.active).to be_truthy
+    expect(service.active).to be_truthy
   end
 end
