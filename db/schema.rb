@@ -74,11 +74,11 @@ ActiveRecord::Schema.define(version: 2018_09_27_190740) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "saleable_type"
     t.bigint "saleable_id"
-    t.bigint "request_id"
+    t.bigint "order_id"
     t.decimal "discount", precision: 5, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["request_id"], name: "index_items_on_request_id"
+    t.index ["order_id"], name: "index_items_on_order_id"
     t.index ["saleable_type", "saleable_id"], name: "index_items_on_saleable_type_and_saleable_id"
   end
 
@@ -96,6 +96,11 @@ ActiveRecord::Schema.define(version: 2018_09_27_190740) do
     t.string "code"
     t.boolean "active", default: true
     t.string "name_of_model"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -168,11 +173,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_190740) do
   create_table "quote_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "active", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

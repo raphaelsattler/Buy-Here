@@ -6,7 +6,7 @@ FactoryBot.define do
     else
       saleable { association(:service) }
     end
-    request { association(:request) }
+    request { association(:order) }
     discount { Faker::Number.between(0.0, 100.0).round(2) }
   end
 end
