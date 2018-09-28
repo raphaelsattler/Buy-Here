@@ -5,6 +5,8 @@ RSpec.describe Rule, type: :model do
 
   it { is_expected.to have_many(:role_rules) }
   it { is_expected.to have_many(:roles).through(:role_rules) }
+  it { is_expected.to belong_to(:permission) }
+  it { is_expected.to belong_to(:models_list) }
   it { is_expected.to validate_presence_of(:code) }
   it { is_expected.to validate_uniqueness_of(:code) }
   it { is_expected.to validate_presence_of(:description) }

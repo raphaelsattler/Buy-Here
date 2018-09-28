@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_185819) do
+ActiveRecord::Schema.define(version: 2018_09_27_190740) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(version: 2018_09_27_185819) do
     t.bigint "user_id"
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "models_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.boolean "active", default: true
+    t.string "name_of_model"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "payment_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -193,6 +201,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_185819) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "models_list_id"
+    t.index ["models_list_id"], name: "index_rules_on_models_list_id"
     t.index ["permission_id"], name: "index_rules_on_permission_id"
   end
 
@@ -261,6 +271,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_185819) do
   add_foreign_key "people", "users"
   add_foreign_key "role_rules", "roles"
   add_foreign_key "role_rules", "rules"
+  add_foreign_key "rules", "models_lists"
   add_foreign_key "rules", "permissions"
   add_foreign_key "telephones", "people"
   add_foreign_key "user_rules", "rules"
