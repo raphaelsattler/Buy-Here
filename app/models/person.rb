@@ -13,6 +13,7 @@ class Person < ApplicationRecord
   has_many :telephones, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :contact_emails, dependent: :destroy
+  has_many :quotes
 
   belongs_to :user
   belongs_to :profile

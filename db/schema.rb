@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_165856) do
+ActiveRecord::Schema.define(version: 2018_09_29_184208) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -184,7 +184,15 @@ ActiveRecord::Schema.define(version: 2018_09_29_165856) do
     t.decimal "total_value", precision: 12, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "quote_status_id"
+    t.bigint "quote_type_id"
+    t.bigint "person_id"
     t.index ["code"], name: "index_quotes_on_code"
+    t.index ["person_id"], name: "index_quotes_on_person_id"
+    t.index ["quote_status_id"], name: "index_quotes_on_quote_status_id"
+    t.index ["quote_type_id"], name: "index_quotes_on_quote_type_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "role_rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -279,6 +287,10 @@ ActiveRecord::Schema.define(version: 2018_09_29_165856) do
   add_foreign_key "people", "buy_intentions"
   add_foreign_key "people", "profiles"
   add_foreign_key "people", "users"
+  add_foreign_key "quotes", "people"
+  add_foreign_key "quotes", "quote_statuses"
+  add_foreign_key "quotes", "quote_types"
+  add_foreign_key "quotes", "users"
   add_foreign_key "role_rules", "roles"
   add_foreign_key "role_rules", "rules"
   add_foreign_key "rules", "models_lists"
