@@ -23,4 +23,5 @@ RSpec.describe Quote, type: :model do
   it { is_expected.to have_db_index(:quote_status_id) }
   it { is_expected.to have_db_index(:quote_type_id) }
   it { is_expected.to have_db_index(:person_id) }
+  it { is_expected.to have_one(:order) }
 end
