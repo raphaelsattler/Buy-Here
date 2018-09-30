@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(version: 2018_09_29_190448) do
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code", default: "", null: false
-    t.decimal "request_value", precision: 12, default: "0", null: false
-    t.decimal "discount", precision: 5, default: "0", null: false
+    t.decimal "request_value", precision: 12, scale: 2, default: "0.0", null: false
+    t.decimal "discount", precision: 5, scale: 2, default: "0.0", null: false
     t.decimal "total_value", precision: 12, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
