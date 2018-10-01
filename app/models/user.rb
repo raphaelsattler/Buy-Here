@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :rules, through: :user_rules
 
   belongs_to :role
+
+  has_secure_password
 end
