@@ -3,7 +3,7 @@ FactoryBot.define do
     person { association(:person) }
     addressable { association(:address_type) }
     street { Faker::Address.street_name }
-    number { Faker::Address.building_number }
+    number { Faker::Address.building_number.to_i }
     zip_code { Faker::Address.zip_code }
     district { Faker::Pokemon.name }
     city { Faker::Address.city }

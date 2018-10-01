@@ -1,11 +1,9 @@
 class Person < ApplicationRecord
-  validates :name, uniqueness: true, presence: true,  if: -> { social_name.blank? }
-  validates :social_name, uniqueness: true, presence: true,  if: -> { name.blank? }
-  validates :name, presence: true,  if: -> { social_name.blank? }
-  validates :social_name, presence: true,  if: -> { name.blank? }
+  validates :name, presence: { if: -> { social_name.blank? } }
+  validates :social_name, presence: { if: -> { name.blank? } }
   validates :email, uniqueness: true, presence: true, email_address: true
-  validates :cpf, cpf: true, uniqueness: true
-  validates :cnpj, cnpj: true, uniqueness: true
+  validates :cpf, cpf: { if: -> { cnpj.blank? } }, uniqueness:  { if: -> { !cpf.blank? } }
+  validates :cnpj, cnpj: { if: -> { cpf.blank? } }, uniqueness: { if: -> { !cnpj.blank? } }
   validates :rg, uniqueness: true
   validates :uf_expediter_rg, length: { is: 2 }
   validates :active, inclusion: { in: [true, false] }
