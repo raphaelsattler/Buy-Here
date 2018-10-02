@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @persons.each do |person| %>
+          <% @people.each do |person| %>
             <tr>
               <td><%= link_to person.email, edit_person_path(person) %></td>
               <td><%= person.name if person.name %><%= person.social_name if person.social_name && !person.name %></td>
@@ -28,7 +28,7 @@
         </tbody>
       </table>
       <div class="pagination-center">
-        <%= will_paginate @persons, class: "pagination" %>
+        <%= will_paginate @people, class: "pagination" %>
       </div>
     </div>
   </div>
