@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to root_url
+    flash[:success] = t("activerecord.session.form.flash.exit")
+    redirect_to new_login_path
   end
 
   private
