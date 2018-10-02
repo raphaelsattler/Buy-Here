@@ -1,22 +1,43 @@
-<%= search_form_for @q, url: search_people_path,
-                        html: { method: :post } do |f| %>
-  <%= f.label t(:name) %>
-  <%= f.search_field :name_cont %>
-  <%= f.label t(:social_name) %>
-  <%= f.search_field :social_name_cont %>
-  <%= f.label t(:rg) %>
-  <%= f.search_field :rg_cont %>
-  <%= f.label t(:cpf) %>
-  <%= f.search_field :cpf_cont %>
-  <%= f.label t(:email) %>
-  <%= f.search_field :email_cont %>
-  <%= f.label t(:profile) %>
-  <%= f.collection_select(:profile_name_cont, Profile.all, :name, :name, include_blank: true) %>
-  <%= f.label t(:buy_intention) %>
-  <%= f.collection_select(:buy_intention_name_cont, BuyIntention.all, :name, :name, include_blank: true) %>
+<div class="container col-md-8 card">
+    <div class="text-center card-header form-head">
+      <%= t :search_filter %>
+    </div>
+    <%= search_form_for @q, url: search_people_path,
+                            html: { method: :post }, class: "form-group card-body" do |f| %>
 
-  <%= f.submit %>
-<% end %>
+      <div class="form-group">
+        <%= f.label :name_cont, t(:name) %>
+        <%= f.search_field :name_cont, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :social_name_cont, t(:social_name) %>
+        <%= f.search_field :social_name_cont, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :rg_cont, t(:rg) %>
+        <%= f.search_field :rg_cont, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :cpf_cont, t(:cpf) %>
+        <%= f.search_field :cpf_cont, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email_cont, t(:email) %>
+        <%= f.search_field :email_cont, class: "form-control" %>
+      </div>
+      <div class="d-flex justify-content-around">
+        <div>
+        <%= f.label :profile_name_cont, t(:profile) %>
+          <%= f.collection_select :profile_name_cont, Profile.all, :name, :name, { include_blank: true }, { class: "btn-sm" } %>
+        </div>
+        <div>
+          <%= f.label :buy_intention_name_cont, t(:buy_intention) %>
+          <%= f.collection_select :buy_intention_name_cont, BuyIntention.all, :name, :name, { include_blank: true }, { class: "btn-sm" } %>
+        </div>
+      </div>
+      <%= f.submit class: "btn btn-md btn-success" %>
+    <% end %>
+</div>
 
 <br/>
 <%= render 'list' %>

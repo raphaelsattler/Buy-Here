@@ -4,13 +4,41 @@
       <table class="table table-bordered">
         <thead class="table-head">
           <tr>
-            <th><%= t :email %></th>
-            <th><%= t :name %></th>
-            <th><%= t :rg %></th>
-            <th><%= t :cpf %></th>
-            <th><%= t :telephone %></th>
-            <th><%= t :profile %></th>
-            <th><%= t :buy_intention %></th>
+              <th>
+            <%= sort_link(@q, :email) do %>
+                <strong class="column-name"><%= t :email %></strong>
+            <% end %>
+              </th>
+              <th>
+            <%= sort_link(@q, :name) do %>
+                <strong class="column-name"><%= t :name %></strong>
+            <% end %>
+              </th>
+              <th>
+            <%= sort_link(@q, :rg) do %>
+                <strong class="column-name"><%= t :rg %></strong>
+            <% end %>
+              </th>
+              <th>
+            <%= sort_link(@q, :cpf) do %>
+                <strong class="column-name"><%= t :cpf %></strong>
+            <% end %>
+              </th>
+              <th>
+            <%= sort_link(@q, :telephone) do %>
+                <strong class="column-name"><%= t :telephone %></strong>
+            <% end %>
+              </th>
+              <th>
+            <%= sort_link(@q, :profile_name) do %>
+                <strong class="column-name"><%= t :profile %></strong>
+            <% end %>
+              </th>
+              <th>
+            <%= sort_link(@q, :buy_intention_name) do %>
+                <strong class="column-name"><%= t :buy_intention %></strong>
+            <% end %>
+              </th>
           </tr>
         </thead>
         <tbody>
