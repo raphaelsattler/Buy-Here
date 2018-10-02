@@ -4,17 +4,17 @@
       <table class="table table-bordered">
         <thead class="table-head">
           <tr>
-            <th>Email</th>
+            <th><%= t :email %></th>
             <th><%= t :name %></th>
-            <th>RG</th>
-            <th>CPF</th>
+            <th><%= t :rg %></th>
+            <th><%= t :cpf %></th>
             <th><%= t :telephone %></th>
             <th><%= t :profile %></th>
             <th><%= t :buy_intention %></th>
           </tr>
         </thead>
         <tbody>
-          <% @persons.each do |person| %>
+          <% @people.each do |person| %>
             <tr>
               <td><%= link_to person.email, edit_person_path(person) %></td>
               <td><%= person.name if person.name %><%= person.social_name if person.social_name && !person.name %></td>
@@ -28,7 +28,7 @@
         </tbody>
       </table>
       <div class="pagination-center">
-        <%= will_paginate @persons, class: "pagination" %>
+        <%= will_paginate @people, class: "pagination" %>
       </div>
     </div>
   </div>
