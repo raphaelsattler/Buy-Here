@@ -6,6 +6,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: reset_params[:email])
     if @user
       @user.create_reset_digest
+      @user.send_password_reset_mail
       flash[:success] = t("password_reset.form.forgot.flash.success")
       redirect_to new_login_path
     else

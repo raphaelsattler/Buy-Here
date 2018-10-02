@@ -34,7 +34,14 @@ pt-BR:
         email_placeholder: Entre com seu email
         flash:
           success: Acesse o link enviado para o email fornecido para recuperar a sua senha.
-          not_found_user: "Usuário não encontrado" 
+          not_found_user: "Usuário não encontrado"
+    mailer:
+      subject: Recuperação de Senha
+      body:
+        title: Recupere sua senha
+        instructions: Para recuperar sua senha click no link abaixo
+        link: Recuperar senha
+        expire: Este link expira em 2 horas
   date:
     abbr_day_names:
     - Dom

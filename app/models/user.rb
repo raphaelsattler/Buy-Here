@@ -35,4 +35,8 @@ class User < ApplicationRecord
     return false if token_reset_digest.nil?
     BCrypt::Password.new(token_reset_digest).is_password?(token_reset)
   end
+
+  def send_password_reset_mail
+    UserMailer.password_reset(self).deliver_now
+  end
 end
