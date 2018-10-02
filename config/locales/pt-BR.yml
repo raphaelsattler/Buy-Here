@@ -24,6 +24,17 @@ pt-BR:
           login_error: Usuário ou senha inválidos
           login_success: Login realizado com sucesso
           exit: Logout realizado com sucesso
+  password_reset:
+    name: Password Reset
+    form:
+      forgot:
+        title: Esqueceu a Senha
+        submit: Enviar
+        email: Email
+        email_placeholder: Entre com seu email
+        flash:
+          success: Acesse o link enviado para o email fornecido para recuperar a sua senha.
+          not_found_user: "Usuário não encontrado" 
   date:
     abbr_day_names:
     - Dom
