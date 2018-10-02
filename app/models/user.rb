@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true, presence: true
   validates :email, presence: true, email_address: true
-  validates :password_digest, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
   validates :active, inclusion: { in: [true, false] }
 
   has_many :people
@@ -32,11 +32,15 @@ class User < ApplicationRecord
   end
 
   def password_reset?(token_reset)
-    return false if token_reset_digest.nil?
-    BCrypt::Password.new(token_reset_digest).is_password?(token_reset)
+    return false if reset_digest.nil?
+    BCrypt::Password.new(reset_digest).is_password?(token_reset)
   end
 
   def send_password_reset_mail
     UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 end

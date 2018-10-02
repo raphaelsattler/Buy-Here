@@ -21,4 +21,8 @@ module ApplicationHelper
   def navbar_helper
     render "layouts/navbar" if signed_in?
   end
+
+  def error_messsages_helper(object)
+    render "shared/error_messages", object: object if object.errors.any?
+  end
 end

@@ -14,6 +14,7 @@ pt-BR:
         title: Login
         submit: Entrar
         exit: Sair
+        login: Logar
         email:
           label: Email
           placeholder: Entre com seu email
@@ -29,12 +30,24 @@ pt-BR:
     form:
       forgot:
         title: Esqueceu a Senha
-        submit: Enviar
+        submit: Recuperar Senha
         email: Email
         email_placeholder: Entre com seu email
+        reset: Recuperar senha
         flash:
           success: Acesse o link enviado para o email fornecido para recuperar a sua senha.
           not_found_user: "Usuário não encontrado"
+      reset:
+        title: Resetar Senha
+        submit: Salvar
+        password:
+          label: Senha
+          placeholder: Entre com uma nova senha
+        password_confirmation:
+          label: Confirmação de Senha
+          placeholder: Confirme sua nova senha
+        flash:
+          expired: Recuperação de senha expirou
     mailer:
       subject: Recuperação de Senha
       body:
