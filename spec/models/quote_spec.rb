@@ -13,14 +13,17 @@ RSpec.describe Quote, type: :model do
   it { is_expected.to validate_presence_of(:discount) }
   it { is_expected.to validate_numericality_of(:discount).is_greater_than_or_equal_to(0) }
   it { is_expected.to validate_numericality_of(:discount).is_less_than_or_equal_to(100) }
+
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:quote_status) }
   it { is_expected.to belong_to(:quote_type) }
   it { is_expected.to belong_to(:person) }
+
   it { is_expected.to have_db_index(:user_id) }
   it { is_expected.to have_db_index(:quote_status_id) }
   it { is_expected.to have_db_index(:quote_type_id) }
   it { is_expected.to have_db_index(:person_id) }
+
   it { is_expected.to have_one(:order) }
 
   context "when validate calculate total value" do
