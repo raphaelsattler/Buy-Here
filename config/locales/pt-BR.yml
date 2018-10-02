@@ -227,3 +227,8 @@ pt-BR:
   will_paginate:
     previous_label: "Página Anterior"
     next_label: "Próxima Página"
+  social_name: "Nome Social"
+  email: "Email"
+  rg: "RG"
+  cpf: "CPF"
+  cnpj: "CNPJ"
