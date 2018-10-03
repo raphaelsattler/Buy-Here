@@ -2,7 +2,7 @@
     <div class="text-center card-header form-head">
       <%= t :search_filter %>
     </div>
-    <%= search_form_for @q, url: people_path,
+    <%= search_form_for @q, url: search_person_index_path,
                             html: { method: :get }, class: "form-group card-body" do |f| %>
 
       <div class="form-group">
