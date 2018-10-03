@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_many(:groups).through(:memberships) }
   it { is_expected.to have_many(:user_rules) }
   it { is_expected.to have_many(:quotes) }
-  
+
   it { is_expected.to have_many(:rules).through(:user_rules) }
   it { is_expected.to validate_presence_of(:username) }
   it { is_expected.to validate_uniqueness_of(:username) }
