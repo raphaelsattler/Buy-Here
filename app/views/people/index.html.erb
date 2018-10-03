@@ -2,8 +2,8 @@
     <div class="text-center card-header form-head">
       <%= t :search_filter %>
     </div>
-    <%= search_form_for @q, url: search_people_path,
-                            html: { method: :post }, class: "form-group card-body" do |f| %>
+    <%= search_form_for @q, url: people_path,
+                            html: { method: :get }, class: "form-group card-body" do |f| %>
 
       <div class="form-group">
         <%= f.label :name_cont, t(:name) %>
@@ -28,11 +28,11 @@
       <div class="d-flex justify-content-around">
         <div>
         <%= f.label :profile_name_cont, t(:profile) %>
-          <%= f.collection_select :profile_name_cont, Profile.all, :name, :name, { include_blank: true }, { class: "btn-sm" } %>
+          <%= f.collection_select :profile_name_cont, profiles, :name, :name, { include_blank: true }, { class: "btn-sm" } %>
         </div>
         <div>
           <%= f.label :buy_intention_name_cont, t(:buy_intention) %>
-          <%= f.collection_select :buy_intention_name_cont, BuyIntention.all, :name, :name, { include_blank: true }, { class: "btn-sm" } %>
+          <%= f.collection_select :buy_intention_name_cont, buy_intentions, :name, :name, { include_blank: true }, { class: "btn-sm" } %>
         </div>
       </div>
       <%= f.submit class: "btn btn-md btn-success" %>
@@ -40,4 +40,5 @@
 </div>
 
 <br/>
+
 <%= render 'list' %>

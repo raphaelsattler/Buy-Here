@@ -7,9 +7,4 @@ class PeopleController < ApplicationController
   def edit; end
 
   def update; end
-
-  def search
-    index
-    render :index
-  end
 end
