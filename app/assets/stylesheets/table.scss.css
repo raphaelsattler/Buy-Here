@@ -11,5 +11,5 @@ tr:nth-child(even) {
   background-color: #6577FF;
 }
 #column-name {
-  color: #FFFFFF !important;
+  color: #FFFFFF;
 }
