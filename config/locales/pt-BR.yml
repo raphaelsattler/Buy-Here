@@ -238,3 +238,15 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  name: "Nome"
+  telephone: "Telefone"
+  profile: "Perfil"
+  buy_intention: "Intenção de Compra"
+  will_paginate:
+    previous_label: "Página Anterior"
+    next_label: "Próxima Página"
+  social_name: "Nome Social"
+  email: "Email"
+  rg: "RG"
+  cpf: "CPF"
+  cnpj: "CNPJ"
