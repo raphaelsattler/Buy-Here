@@ -10,6 +10,6 @@ tr:nth-child(even) {
 .table-head {
   background-color: #6577FF;
 }
-.column-name {
+#column-name {
   color: #FFFFFF !important;
 }
