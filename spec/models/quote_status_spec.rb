@@ -8,6 +8,7 @@ RSpec.describe QuoteStatus, type: :model do
   it { is_expected.to validate_presence_of(:order) }
   it { is_expected.to validate_length_of(:order).is_at_most(255) }
   it { is_expected.to validate_numericality_of(:order) }
+  it { is_expected.to have_many(:quotes) }
 
   it "defaults active to true" do
     expect(quote_status.active).to be_truthy
