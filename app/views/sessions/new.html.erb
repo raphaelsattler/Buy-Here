@@ -1,18 +1,18 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
   	<h1><%= t('activerecord.session.form.title') %></h1>
-  <%= form_with(scope: :session, url: login_index_path, local: true) do |f| %>
-    <div class="form-group"> 
-      <%= f.label :email, t('activerecord.session.form.email.label') %>
-      <%= f.email_field :email, {placeholder: t('activerecord.session.form.email.placeholder'), class: 'form-control'} %>
-    </div>
-  <div class="form-group">
-      <%= f.label :password, t('activerecord.session.form.password.label') %>
-      <%= f.password_field :password, { placeholder: t('activerecord.session.form.password.placeholder'), class: 'form-control'} %>
-  </div>
-  <div class="form-group">
-      <%= f.submit t('activerecord.session.form.submit'), class: 'btn btn-info' %>
-  </div>
-  <% end %>
+    <%= form_with(scope: :session, url: login_index_path, local: true) do |f| %>
+      <div class="form-group"> 
+        <%= f.label :email, t('activerecord.session.form.email.label') %>
+        <%= f.email_field :email, {placeholder: t('activerecord.session.form.email.placeholder'), class: 'form-control'} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, t('activerecord.session.form.password.label') %>
+        <%= f.password_field :password, { placeholder: t('activerecord.session.form.password.placeholder'), class: 'form-control'} %>
+      </div>
+      <div class="form-group">
+        <%= f.submit t('activerecord.session.form.submit'), class: 'btn btn-info' %>
+      </div>
+    <% end %>
   </div>
 </div>
