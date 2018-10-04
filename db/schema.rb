@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_190448) do
+ActiveRecord::Schema.define(version: 2018_10_02_135427) do
 
   create_table "address_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -178,7 +178,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_190448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+  
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code", default: "", null: false
     t.decimal "request_value", precision: 12, scale: 2, default: "0.0", null: false
@@ -196,7 +196,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_190448) do
     t.index ["quote_type_id"], name: "index_quotes_on_quote_type_id"
     t.index ["user_id"], name: "index_quotes_on_user_id"
   end
-
+  
   create_table "role_rules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "rule_id"
     t.boolean "active", default: true
@@ -273,8 +273,8 @@ ActiveRecord::Schema.define(version: 2018_09_29_190448) do
     t.string "email"
     t.boolean "active", default: true
     t.string "password_digest"
-    t.string "reset_password_sent_at"
-    t.datetime "token_recovery_expire_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_users_on_role_id"
