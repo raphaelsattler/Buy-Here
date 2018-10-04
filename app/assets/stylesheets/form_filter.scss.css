@@ -1,10 +1,5 @@
-.form-head {
-  background-color: #6577FF !important;
-  color: #FFFFFF;
-}
-
-.form-selector {
-  background-color: #6577FF !important;
+#form-head {
+  background-color: #6577FF;
   color: #FFFFFF;
 }
 
