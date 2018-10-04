@@ -7,34 +7,46 @@
     <div class="form-group card-body">
     <%= search_form_for @q, url: search_person_index_path,
                             html: { method: :get } do |f| %>
-      <div class="form-group">
-        <%= f.label :name_cont, t(:name) %>
-        <%= f.search_field :name_cont, class: "form-control", id: "name_cont" %>
+      <div class="d-flex justify-content-around">
+        <div class="form-group col-md-8">
+          <%= f.label :name_cont, t(:name) %>
+          <%= f.search_field :name_cont, class: "form-control" %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.label :cpf_cont, t(:cpf) %>
+          <%= f.search_field :cpf_cont, class: "form-control" %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :social_name_cont, t(:social_name) %>
-        <%= f.search_field :social_name_cont, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :rg_cont, t(:rg) %>
-        <%= f.search_field :rg_cont, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :cpf_cont, t(:cpf) %>
-        <%= f.search_field :cpf_cont, class: "form-control" %>
-      </div>
-      <div class="form-group">
+      <div class="form-group col-md-12">
         <%= f.label :email_cont, t(:email) %>
         <%= f.search_field :email_cont, class: "form-control" %>
       </div>
-      <div class="d-flex justify-content-around">
-        <div class="text-center">
-        <%= f.label :profile_name_cont, t(:profile) %>
-          <%= f.collection_select :profile_name_cont, profiles, :name, :name, { include_blank: true }, { class: "btn-sm form-control" } %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= link_to t(:advanced_search),
+                        "#collapseAdvancedSearch", { class: "btn btn-primary col-md-8", "data-toggle": "collapse" } %>
         </div>
-        <div class="text-center">
-          <%= f.label :buy_intention_name_cont, t(:buy_intention) %>
-          <%= f.collection_select :buy_intention_name_cont, buy_intentions, :name, :name, { include_blank: true }, { class: "btn-sm form-control" } %>
+      </div>
+      <div class="card-body">
+        <div class="collapse" id="collapseAdvancedSearch">
+          <div class="form-group">
+            <%= f.label :social_name_cont, t(:social_name) %>
+            <%= f.search_field :social_name_cont, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :rg_cont, t(:rg) %>
+            <%= f.search_field :rg_cont, class: "form-control" %>
+          </div>
+          <div class="d-flex justify-content-around">
+            <div class="text-center">
+            <%= f.label :profile_name_cont, t(:profile) %>
+              <%= f.collection_select :profile_name_cont, profiles, :name, :name, { include_blank: true }, { class: "btn-sm form-control" } %>
+            </div>
+            <div class="text-center">
+              <%= f.label :buy_intention_name_cont, t(:buy_intention) %>
+              <%= f.collection_select :buy_intention_name_cont, buy_intentions, :name, :name, { include_blank: true }, { class: "btn-sm form-control" } %>
+            </div>
+          </div>
         </div>
       </div>
       <%= f.submit class: "btn btn-md btn-success", id: "search-button" %>
