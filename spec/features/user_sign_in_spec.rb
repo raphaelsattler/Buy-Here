@@ -19,7 +19,7 @@ RSpec.describe "User login", type: :feature do
     expect(page).to have_content(t("activerecord.session.form.flash.login_error"))
   end
 
-  it "when user log out" do
+  scenario "when user log out" do
     sign_in_with(user.email, password)
     sign_out
     expect(page).to have_content(t("activerecord.session.form.flash.exit"))
