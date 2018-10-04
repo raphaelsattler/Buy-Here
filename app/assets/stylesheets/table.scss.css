@@ -8,6 +8,8 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 .table-head {
-  color: #FFFFFF;
   background-color: #6577FF;
+}
+#column-name {
+  color: #FFFFFF;
 }
