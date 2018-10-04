@@ -178,7 +178,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_190448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+  
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code", default: "", null: false
     t.decimal "request_value", precision: 12, scale: 2, default: "0.0", null: false
