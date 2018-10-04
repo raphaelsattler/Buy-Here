@@ -13,9 +13,9 @@ RSpec.feature "People List" do
 
     visit "/"
 
-    fill_in I18n.t(:name), with: "#{person1.name}"
+    fill_in "name_cont", with: "#{person1.name}"
 
-    find('input[name="commit"]').click
+    find("#search-button").click
 
     expect(page).to have_content(person1.name)
   end
@@ -26,9 +26,9 @@ RSpec.feature "People List" do
 
     visit "/"
 
-    fill_in I18n.t(:name), with: "#{person1.name}"
+    fill_in "name_cont", with: "#{person1.name}"
 
-    find('input[name="commit"]').click
+    find("#search-button").click
 
     expect(page).not_to have_content(person2.name)
   end

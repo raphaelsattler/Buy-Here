@@ -9,7 +9,7 @@
                             html: { method: :get } do |f| %>
       <div class="form-group">
         <%= f.label :name_cont, t(:name) %>
-        <%= f.search_field :name_cont, class: "form-control" %>
+        <%= f.search_field :name_cont, class: "form-control", id: "name_cont" %>
       </div>
       <div class="form-group">
         <%= f.label :social_name_cont, t(:social_name) %>
@@ -37,7 +37,7 @@
           <%= f.collection_select :buy_intention_name_cont, buy_intentions, :name, :name, { include_blank: true }, { class: "btn-sm form-control" } %>
         </div>
       </div>
-      <%= f.submit class: "btn btn-md btn-success" %>
+      <%= f.submit class: "btn btn-md btn-success", id: "search-button"%>
     <% end %>
   </div>
 </div>
