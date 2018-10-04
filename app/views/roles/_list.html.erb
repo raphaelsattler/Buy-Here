@@ -4,8 +4,8 @@
       <table class="table table-bordered">
         <thead class="table-head">
           <tr>
-            <th><%= t('activerecord.role.name') %></th>
-            <th><%= t('activerecord.role.active') %></th>
+            <th><%= ransack_sort_link_helper(@q, :active, t('activerecord.role.name')) %></th>
+            <th><%= ransack_sort_link_helper(@q, :active, t('activerecord.role.active')) %> </th>
           </tr>
         </thead>
         <tbody>

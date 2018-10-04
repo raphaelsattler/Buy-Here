@@ -21,4 +21,10 @@ module ApplicationHelper
   def navbar_helper
     render "layouts/navbar" if signed_in?
   end
+
+  def ransack_sort_link_helper(q, attribute, i18n_attribute)
+    sort_link(q, attribute) do
+      content_tag(:strong, i18n_attribute)
+    end
+  end
 end
