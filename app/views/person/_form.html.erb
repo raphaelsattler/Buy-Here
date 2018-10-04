@@ -8,20 +8,20 @@
   <%= form_with model: @person, scope: :person, url: '/person', class: 'form-group card-body', method: :post do |form| %>
     <div class="form-group col-md-12">
       <%= form.label :email, t(:email) %>
-      <%= form.text_field :email, class: "form-control"  %>
+      <%= form.text_field :email, class: "form-control", id: "email"  %>
     </div>
     <div class="form-group col-md-12">
       <%= form.label :name, t(:name) %>
-      <%= form.text_field :name, class: "form-control"  %>
+      <%= form.text_field :name, class: "form-control", id: "name" %>
     </div>
     <div class="form-group d-flex justify-content-around">
       <div class="col-md-6">
         <%= form.label :cpf, t(:cpf) %>
-        <%= form.text_field :cpf, class: "form-control"  %>
+        <%= form.text_field :cpf, class: "form-control", id: "cpf"  %>
       </div>
       <div class="col-md-6">
         <%= form.label :cnpj, t(:cnpj) %>
-        <%= form.text_field :cnpj, class: "form-control"  %>
+        <%= form.text_field :cnpj, class: "form-control" %>
       </div>
     </div>
     <div class="form-group col-md-12">
@@ -45,21 +45,21 @@
     <div class="d-flex justify-content-around">
       <div class="text-center">
       <%= form.label :profile_id, t(:profile) %>
-        <%= form.collection_select :profile_id, profiles, :id, :name, { include_blank: true }, { class: "btn-sm form-control" } %>
+        <%= form.collection_select :profile_id, profiles, :id, :name, { include_blank: true }, { class: "btn-sm form-control", id: "profile" } %>
       </div>
       <div class="text-center">
         <%= form.label :buy_intention_id, t(:buy_intention) %>
-        <%= form.collection_select :buy_intention_id, buy_intentions, :id, :name, { include_blank: true }, { class: "btn-sm form-control" } %>
+        <%= form.collection_select :buy_intention_id, buy_intentions, :id, :name, { include_blank: true }, { class: "btn-sm form-control", id: "buy-intention" } %>
       </div>
       <div class="text-center">
         <%= form.label :user_id, t(:user) %>
-        <%= form.collection_select :user_id, User.all, :id, :username, { include_blank: true }, { class: "btn-sm form-control" } %>
+        <%= form.collection_select :user_id, User.all, :id, :username, { include_blank: true }, { class: "btn-sm form-control", id: "user" } %>
       </div>
     </div>
     <div class="form-group col-md-12">
       <%= link_to t(:cancel),
                   "#collapseForm", { class: 'btn btn-danger', "data-toggle": "collapse" } %>
-      <%= form.submit class: "btn btn-md btn-success float-right" %>
+      <%= form.submit class: "btn btn-md btn-success float-right", id: "create-button" %>
     </div>
   <% end %>
 </div>
