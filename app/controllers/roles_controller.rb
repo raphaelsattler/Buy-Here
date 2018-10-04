@@ -16,9 +16,24 @@ class RolesController < ApplicationController
     end
   end
 
+  def edit
+    @role = Role.find_by(id: params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    @role = Role.find_by(id: params[:id])
+    @valid_params = valid_params
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
     def valid_params
-      params.require(:role).permit(:name)
+      params.require(:role).permit(:name, :active)
     end
 end

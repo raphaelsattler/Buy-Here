@@ -32,8 +32,10 @@ pt-BR:
         active: Ativo
         new: Novo Cargo
         save: Salvar
+        close: Fechar
         title:
           search: Filtro de Busca
+          edit: "Editar Cargo"
       flash:
         success: Cargo criado com sucesso!
   date:

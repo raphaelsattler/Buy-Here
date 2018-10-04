@@ -1,0 +1,10 @@
+<%= form_with model: @role, scope: :role, url: edit_role_path, class:'', method: :patch do |f| %>
+    <div class="alert alert-danger d-none" id="activerecord-errors"> </div>
+        <div class="form-group">
+              <%= f.label t('activerecord.role.form.name') %>
+              <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+              <%= f.submit t('activerecord.role.form.save'), class: 'btn btn-info' %>
+        </div>
+<%end%>

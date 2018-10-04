@@ -1,0 +1,16 @@
+<div class="alert alert-danger d-none" id="activerecord_errors_modal"></div>
+<%= form_with model: @role, scope: :role, class:'form-group' do |f| %>
+        <div class="form-group">
+              <%= f.label t('activerecord.role.form.name') %>
+              <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <% unless @role.new_record? %>
+          <div class="form-group">
+              <%= f.label t('activerecord.role.form.active') %>
+              <%= f.check_box :active, class: 'form-control' %>
+          </div>
+        <% end %>
+        <div class="form-group">
+              <%= f.submit t('activerecord.role.form.save'), class: 'btn btn-info' %>
+        </div>
+<%end%>

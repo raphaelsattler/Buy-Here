@@ -39,10 +39,4 @@ module ApplicationHelper
           end
       end
   end
-
-  def render_activerecord_errors_helper(messages)
-    content_for :activerecord_errors do
-      error_messages_helper messages
-    end
-  end
 end

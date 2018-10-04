@@ -1,6 +1,5 @@
 <% if @role.save %>
-  $("#list-role").prepend("<%= j render @role %>");
-  $("#list-role > tr").last().remove();
+  
   $("#activerecord-errors").addClass("d-none");       
 <% else %>
   $("#activerecord-errors").removeClass("d-none"); 
