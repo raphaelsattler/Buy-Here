@@ -27,4 +27,22 @@ module ApplicationHelper
       content_tag(:strong, i18n_attribute)
     end
   end
+
+  def button_new_helper(label_i18n, collapsable_id)
+    link_to label_i18n, "#" + collapsable_id, class: "btn btn-info float-right", data: { toggle: :collapse }
+  end
+
+  def error_messages_helper(messages)
+    content_tag :ul do
+        messages.each do |message|
+            concat content_tag(:li, message)
+          end
+      end
+  end
+
+  def render_activerecord_errors_helper(messages)
+    content_for :activerecord_errors do
+      error_messages_helper messages
+    end
+  end
 end

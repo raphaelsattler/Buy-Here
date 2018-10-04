@@ -1,6 +1,7 @@
 pt-BR:
   buy_here:
     wellcome: Bem-vindo
+    no_data: Nada encontrado
   activerecord:
     errors:
       messages:
@@ -29,8 +30,12 @@ pt-BR:
       form:
         name: Cargo
         active: Ativo
+        new: Novo Cargo
+        save: Salvar
         title:
           search: Filtro de Busca
+      flash:
+        success: Cargo criado com sucesso!
   date:
     abbr_day_names:
     - Dom

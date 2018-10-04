@@ -8,7 +8,7 @@
             <th><%= ransack_sort_link_helper(@q, :active, t('activerecord.role.active')) %> </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="list-role">
           <%= render @roles || t('buy-here.no_data')%>
         </tbody>
       </table>

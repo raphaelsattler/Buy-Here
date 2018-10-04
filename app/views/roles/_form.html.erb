@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="float-right col-md-3">
+           <%= button_new_helper t('activerecord.role.form.new'), 'collapseForm' %>
+          </div>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+        <div class="collapse" id="collapseForm">
+          <%= form_with model: @role, scope: :role, url: '/roles', class:'', method: :post do |f| %>
+            <div class="alert alert-danger d-none" id="activerecord-errors"> </div>
+            <div class="form-group">
+              <%= f.label t('activerecord.role.form.name') %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.submit t('activerecord.role.form.save'), class: 'btn btn-info' %>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
