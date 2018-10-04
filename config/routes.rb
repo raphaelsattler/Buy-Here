@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       match "search" => "person#search", via: [:get, :post], as: :search
     end
   end
+  root "person#index"
 end
