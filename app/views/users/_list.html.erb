@@ -42,11 +42,11 @@
           </tr>
         </thead>
         <tbody id="list_content">
-          <%= render @people || t('buy-here.no_data') %>
+          <%= render @users || t('buy-here.no_data') %>
         </tbody>
       </table>
       <div class="pagination-center">
-        <%= will_paginate @people, class: "pagination" %>
+        <%= will_paginate @users, class: "pagination" %>
       </div>
     </div>
   </div>

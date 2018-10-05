@@ -1,0 +1,7 @@
+<% if @user.update_attributes(@user_params) %>
+  $("#modal").modal('hide');
+  $("#activerecord_errors_modal").addClass("d-none");
+<% else %>
+  $("#activerecord_errors_modal").removeClass("d-none");
+  $("#activerecord_errors_modal").html("<%= j error_messages_helper(@user.errors.full_messages) %>");
+<% end %>

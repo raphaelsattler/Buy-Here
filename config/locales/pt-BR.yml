@@ -38,6 +38,22 @@ pt-BR:
           edit: "Editar Cargo"
       flash:
         success: Cargo criado com sucesso!
+    person:
+      name: Nome
+      form:
+        name: Nome
+        active: Ativo
+        new: Nova Pessoa
+        save: Salvar
+        close: Fechar
+        cancel: Cancelar
+        title:
+          search: Filtro de Busca
+          edit: "Editar Cadastro"
+      list:
+        delete: Deletar
+      flash:
+        success: Cadastro criado com sucesso!
   date:
     abbr_day_names:
     - Dom

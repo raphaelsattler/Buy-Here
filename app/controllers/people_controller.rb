@@ -11,24 +11,24 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(person_params)
-    if !@person.save
-      flash[:error] = "#{@person.errors.full_messages}"
+    respond_to do |format|
+      format.js
     end
   end
 
   def edit
     @person = Person.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
+    @person_params = person_params
     @person = Person.find(params[:id])
     @person.update(person_params)
-    if @person.update(person_params)
-      flash[:success] = "Person was successfully updated!"
-      redirect_to root_path
-    else
-      flash[:error] = "#{@person.errors.full_messages}"
-      redirect_to root_path
+    respond_to do |format|
+      format.js
     end
   end
 

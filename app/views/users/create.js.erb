@@ -1,0 +1,8 @@
+<% if @user.save %>
+  $("#list_content").prepend("<%= j render @user %>");
+  $("#list_content > tr:last-child").remove();
+  $("#activerecord-errors").addClass("d-none");
+<% else %>
+  $("#activerecord-errors").removeClass("d-none");
+  $("#activerecord-errors").html("<%= j error_messages_helper(@user.errors.full_messages) %>");
+<% end %>

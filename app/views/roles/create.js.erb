@@ -1,7 +1,8 @@
 <% if @role.save %>
-  
-  $("#activerecord-errors").addClass("d-none");       
+  $("#list_content").prepend("<%= j render @role %>");
+  $("#list_content > tr:last-child").remove();
+  $("#activerecord-errors").addClass("d-none");
 <% else %>
-  $("#activerecord-errors").removeClass("d-none"); 
-  $("#activerecord-errors").html("<%= j error_messages_helper(@role.errors.full_messages) %>");    
+  $("#activerecord-errors").removeClass("d-none");
+  $("#activerecord-errors").html("<%= j error_messages_helper(@role.errors.full_messages) %>");
 <% end %>

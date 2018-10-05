@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to_modal_helper user.email, edit_user_path(user) %></td>
+  <td><%= user.name if user.name %><%= user.social_name if user.social_name && !user.name %></td>
+  <td><%= user.rg %></td>
+  <td><%= CPF.new(user.cpf).formatted if user.cpf %><%= CNPJ.new(user.cnpj).formatted if user.cnpj && !user.cpf? %></td>
+  <td><%= user.telephones.first %></td>
+  <td><%= user.profile.name %></td>
+  <td><%= user.buy_intention.name %></td>
+</tr>
