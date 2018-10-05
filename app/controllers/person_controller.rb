@@ -10,7 +10,6 @@ class PersonController < ApplicationController
   end
 
   def create
-    byebug
     @person = Person.new(person_params)
     if !@person.save
       flash[:error] = "#{@person.errors.full_messages}"
