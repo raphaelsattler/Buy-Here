@@ -13,3 +13,7 @@ tr:nth-child(even) {
 #column-name {
   color: #FFFFFF;
 }
+
+th > a {
+  color: #FFF;
+}
