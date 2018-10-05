@@ -39,4 +39,16 @@ module ApplicationHelper
           end
       end
   end
+
+  def render_collection_helper(collection, colspan = 100)
+    if collection
+      render collection
+    else
+      content_tag :td, t("buy-here.no_data"), colspan: colspan
+    end
+  end
+
+  def reder_pagination_helper(collection)
+    will_paginate collection, class: "pagination" if collection
+  end
 end
