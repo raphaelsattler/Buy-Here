@@ -21,4 +21,22 @@ module ApplicationHelper
   def navbar_helper
     render "layouts/navbar" if signed_in?
   end
+
+  def ransack_sort_link_helper(q, attribute, i18n_attribute)
+    sort_link(q, attribute) do
+      content_tag(:strong, i18n_attribute)
+    end
+  end
+
+  def button_new_helper(label_i18n, collapsable_id)
+    link_to label_i18n, "#" + collapsable_id, class: "btn btn-info float-right", data: { toggle: :collapse }
+  end
+
+  def error_messages_helper(messages)
+    content_tag :ul do
+        messages.each do |message|
+            concat content_tag(:li, message)
+          end
+      end
+  end
 end

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="table-head">
+          <tr>
+            <th><%= ransack_sort_link_helper(@q, :active, t('activerecord.role.name')) %></th>
+            <th><%= ransack_sort_link_helper(@q, :active, t('activerecord.role.active')) %> </th>
+          </tr>
+        </thead>
+        <tbody id="list-role">
+          <%= render @roles || t('buy-here.no_data')%>
+        </tbody>
+      </table>
+      <div class="pagination-center">
+        <%= will_paginate @role, class: "pagination" %>
+      </div>
+    </div>
+  </div>
+</div>
