@@ -1,4 +1,6 @@
 pt-BR:
+  buy_here:
+    wellcome: Bem-vindo
   activerecord:
     errors:
       messages:
@@ -6,6 +8,22 @@ pt-BR:
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+    session:
+      name: 'Sessão'
+      form:
+        title: Login
+        submit: Entrar
+        exit: Sair
+        email:
+          label: Email
+          placeholder: Entre com seu email
+        password:
+          label: Senha
+          placeholder: Entre com sua senha
+        flash:
+          login_error: Usuário ou senha inválidos
+          login_success: Login realizado com sucesso
+          exit: Logout realizado com sucesso
   date:
     abbr_day_names:
     - Dom

@@ -12,4 +12,6 @@ class User < ApplicationRecord
   has_many :quotes
 
   belongs_to :role
+
+  has_secure_password
 end

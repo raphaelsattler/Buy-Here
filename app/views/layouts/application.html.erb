@@ -17,7 +17,10 @@
   </head>
 
   <body>
+    <%= navbar_helper %>
     <%= render 'layouts/flash_messages' %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
