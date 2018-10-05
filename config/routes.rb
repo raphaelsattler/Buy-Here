@@ -8,11 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :person do
-    collection do
-      match "search" => "person#search", via: [:get, :post], as: :search
-    end
-  end
+  resources :people
 
   root "sessions#new"
 end

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(valid_params[:password])
       sign_in user
       flash[:success] = t("activerecord.session.form.flash.login_success")
-      redirect_to person_index_path
+      redirect_to people_path
     else
       flash.now[:alert] = t("activerecord.session.form.flash.login_error")
       render "new"

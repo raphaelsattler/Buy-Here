@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "People List" do
+RSpec.feature "People Search" do
   let(:user) { create(:user) }
   let(:profile) { create(:profile) }
   let(:buy_intention) { create(:buy_intention) }

@@ -1,4 +1,4 @@
-class PersonController < ApplicationController
+class PeopleController < ApplicationController
   def index
     new_person
     @q = Person.ransack(params[:q])
@@ -31,11 +31,6 @@ class PersonController < ApplicationController
       flash[:error] = "#{@person.errors.full_messages}"
       redirect_to root_path
     end
-  end
-
-  def search
-    index
-    render :index
   end
 
   private
