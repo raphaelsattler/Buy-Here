@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "People List" do
+RSpec.feature "People Search" do
   let(:user) { create(:user) }
   let(:profile) { create(:profile) }
   let(:buy_intention) { create(:buy_intention) }
@@ -13,9 +13,9 @@ RSpec.feature "People List" do
 
     visit "/"
 
-    fill_in I18n.t(:name), with: "#{person1.name}"
+    fill_in "name_cont", with: "#{person1.name}"
 
-    find('input[name="commit"]').click
+    find("#search-button").click
 
     expect(page).to have_content(person1.name)
   end
@@ -26,9 +26,9 @@ RSpec.feature "People List" do
 
     visit "/"
 
-    fill_in I18n.t(:name), with: "#{person1.name}"
+    fill_in "name_cont", with: "#{person1.name}"
 
-    find('input[name="commit"]').click
+    find("#search-button").click
 
     expect(page).not_to have_content(person2.name)
   end
