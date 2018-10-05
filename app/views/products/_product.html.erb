@@ -1,5 +1,5 @@
-<tr>
-  <td> <%= link_to_modal_helper product.code, '#' %> </td>
+<tr id="<%= product.code %>">
+  <td> <%= link_to_modal_helper product.code, edit_product_path(product) %> </td>
   <td> <%= product.name %></td>
   <td> <%= product.description %></td>
   <td> <%= product.value %></td>

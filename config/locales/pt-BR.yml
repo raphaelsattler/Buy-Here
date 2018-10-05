@@ -49,6 +49,7 @@ pt-BR:
         new: Novo Produto
         title:
           search: Filtro de Busca
+          edit: Editar Produto
   date:
     abbr_day_names:
     - Dom

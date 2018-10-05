@@ -1,0 +1,7 @@
+<% if @product.update_attributes(@valid_params) %>
+  $("#modal").modal('hide');
+  $("#activerecord_errors_modal").addClass("d-none"); 
+<% else %>
+  $("#activerecord_errors_modal").removeClass("d-none"); 
+  $("#activerecord_errors_modal").html("<%= j error_messages_helper(@product.errors.full_messages) %>");    
+<% end %>

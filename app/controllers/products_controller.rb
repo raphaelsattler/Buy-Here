@@ -23,6 +23,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update
+    @product = Product.find_by(id: params[:id])
+    @valid_params = valid_params
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
     def valid_params
