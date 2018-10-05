@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  root to: "person#index"
+  root to: "people#index"
 
-  resources :person do
-    collection do
-      match "search" => "person#search", via: [:get, :post], as: :search
-    end
-  end
+  resources :people
 end

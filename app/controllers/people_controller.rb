@@ -1,4 +1,4 @@
-class PersonController < ApplicationController
+class PeopleController < ApplicationController
   def index
     new_person
     @q = Person.ransack(params[:q])
@@ -10,6 +10,7 @@ class PersonController < ApplicationController
   end
 
   def create
+    byebug
     @person = Person.new(person_params)
     if !@person.save
       flash[:error] = "#{@person.errors.full_messages}"
@@ -19,11 +20,6 @@ class PersonController < ApplicationController
   def edit; end
 
   def update; end
-
-  def search
-    index
-    render :index
-  end
 
   private
 

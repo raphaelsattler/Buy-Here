@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="container">
-  <%= form_with model: @person, scope: :person, url: '/person', class: 'form-group card-body', method: :post do |form| %>
+  <%= form_with model: @person, scope: :people, url: '/people', class: 'form-group card-body', method: :post do |form| %>
     <div class="form-group col-md-12">
       <%= form.label :email, t(:email) %>
       <%= form.text_field :email, class: "form-control", id: "email"  %>
