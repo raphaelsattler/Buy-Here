@@ -44,7 +44,7 @@
     </div>
     <div class="d-flex justify-content-around">
       <div class="text-center">
-      <%= form.label :profile_id, t(:profile) %>
+        <%= form.label :profile_id, t(:profile) %>
         <%= form.collection_select :profile_id, profiles, :id, :name, { include_blank: true }, { class: "btn-sm form-control", id: "profile" } %>
       </div>
       <div class="text-center">
