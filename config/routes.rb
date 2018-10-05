@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       match "search" => "person#search", via: [:get, :post], as: :search
     end
   end
-  resources :products, only: [:index] do
+  resources :products, only: [:index, :new, :create] do
     collection do
       match "search" => "products#search", via: [:get, :post], as: :search
     end

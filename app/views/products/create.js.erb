@@ -1,0 +1,8 @@
+<% if @product.save %>
+  $("#list_content").prepend("<%= j render @product %>");
+  $("#list_content > tr:last-child").remove(); 
+  $("#activerecord-errors").addClass("d-none");     
+<% else %>
+  $("#activerecord-errors").removeClass("d-none");
+  $("#activerecord-errors").html("<%= j error_messages_helper(@product.errors.full_messages) %>");
+<% end %>

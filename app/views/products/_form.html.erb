@@ -1,0 +1,22 @@
+<div class="alert alert-danger d-none" id="activerecord_errors_modal"></div>
+<%= form_with model: @product, scope: :product, class:'form-group' do |f| %>
+  <div class="form-group">
+    <%= f.label t('activerecord.product.form.name') %>
+    <%= f.text_field :code, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label t('activerecord.product.form.name') %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label t('activerecord.product.form.description') %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label t('activerecord.product.form.value') %>
+    <%= f.text_field :value, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'sad', class: 'btn btn-info' %>
+  </div>
+<%end%>

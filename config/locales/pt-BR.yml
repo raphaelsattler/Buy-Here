@@ -44,7 +44,9 @@ pt-BR:
         name: Nome
         code: Código
         description: Descrição
-        value>: Valor
+        value: Valor
+        save: Salvar
+        new: Novo Produto
         title:
           search: Filtro de Busca
   date:

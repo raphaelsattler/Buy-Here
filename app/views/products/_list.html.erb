@@ -10,7 +10,7 @@
             <th><%= ransack_sort_link_helper(@q, :active, t('activerecord.products.value')) %> </th>
           </tr>
         </thead>
-        <tbody id="list-role">
+        <tbody id="list_content">
           <%= render_collection_helper(@products) %>
         </tbody>
       </table>
