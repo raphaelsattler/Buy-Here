@@ -1,0 +1,63 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class_helper(key) %>">
+    <%= value %>
+  </div>
+<% end %>
+
+<div class="container">
+  <%= form_with model: @person, scope: :person, class: 'form-group card-body' do |form| %>
+    <div class="form-group col-md-12">
+      <%= form.label :email, t(:email) %>
+      <%= form.text_field :email, class: "form-control", id: "email"  %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= form.label :name, t(:name) %>
+      <%= form.text_field :name, class: "form-control", id: "name" %>
+    </div>
+    <div class="form-group d-flex justify-content-around">
+      <div class="col-md-6">
+        <%= form.label :cpf, t(:cpf) %>
+        <%= form.text_field :cpf, class: "form-control", id: "cpf"  %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :cnpj, t(:cnpj) %>
+        <%= form.text_field :cnpj, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group col-md-12">
+      <%= form.label :social_name, t(:social_name) %>
+      <%= form.text_field :social_name, class: "form-control"  %>
+    </div>
+    <div class="form-group d-flex justify-content-around">
+      <div class="col-md-4">
+        <%= form.label :rg, t(:rg) %>
+        <%= form.text_field :rg, class: "form-control"  %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :expediter_rg, t(:expediter) %>
+        <%= form.text_field :expediter_rg, class: "form-control"  %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :uf_expediter_rg, t(:uf_expediter) %>
+        <%= form.text_field :uf_expediter_rg, class: "form-control"  %>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around">
+      <div class="text-center">
+      <%= form.label :profile_id, t(:profile) %>
+        <%= form.collection_select :profile_id, profiles, :id, :name, { include_blank: true }, { class: "btn-sm form-control", id: "profile" } %>
+      </div>
+      <div class="text-center">
+        <%= form.label :buy_intention_id, t(:buy_intention) %>
+        <%= form.collection_select :buy_intention_id, buy_intentions, :id, :name, { include_blank: true }, { class: "btn-sm form-control", id: "buy-intention" } %>
+      </div>
+      <div class="text-center">
+        <%= form.label :user_id, t(:user) %>
+        <%= form.collection_select :user_id, User.all, :id, :username, { include_blank: true }, { class: "btn-sm form-control", id: "user" } %>
+      </div>
+    </div>
+    <div class="form-group col-md-12">
+      <%= form.submit class: "btn btn-md btn-success float-right", id: "create-button" %>
+    </div>
+  <% end %>
+</div>
